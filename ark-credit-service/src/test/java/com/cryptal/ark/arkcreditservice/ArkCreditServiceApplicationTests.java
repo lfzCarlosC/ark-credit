@@ -1,4 +1,4 @@
-package com.cryptal.ark.arkcredit;
+package com.cryptal.ark.arkcreditservice;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ArkCreditApplicationTests {
+public class ArkCreditServiceApplicationTests {
 
 	@Test
 	public void contextLoads() {
