@@ -1,4 +1,4 @@
-# ark-credit
+# cryptal-ark-credit
 一个积分管理系统， 为用户得到的币种推荐结果做积分管理
 
 需求管理地址：
