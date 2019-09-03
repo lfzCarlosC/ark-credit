@@ -11,7 +11,7 @@
 	<groupId>com.cryptal.ark</groupId>
 	<artifactId>ark-credit-utils</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ark-credit-utils</name>
+	<name>ark-credit-common</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

@@ -2,6 +2,9 @@ package com.cryptal.ark.db;
 
 import java.util.ResourceBundle;
 
+/**
+ * 可以重构，这里只是为了表示可以把关于db连接的类发到此
+ */
 public class DbResourcesConfiguration
 {
     private static Object lock = new Object();
