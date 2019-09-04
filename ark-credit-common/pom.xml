@@ -9,8 +9,8 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>ark-credit-utils</artifactId>
-	<name>ark-credit-utils</name>
+	<artifactId>ark-credit-common</artifactId>
+	<name>ark-credit-common</name>
 
 	<properties>
 		<java.version>1.8</java.version>
