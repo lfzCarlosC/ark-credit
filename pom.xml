@@ -8,11 +8,18 @@
 		<version>2.1.7.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
+	<modules>
+		<module>ark-credit-service</module>
+		<module>ark-credit-common</module>
+		<module>ark-credit-dal</module>
+	</modules>
+
 	<groupId>com.cryptal.ark</groupId>
 	<artifactId>ark-credit</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ark-credit</name>
-	<description>Demo project for Spring Boot</description>
+	<packaging>pom</packaging>
 
 	<properties>
 		<java.version>1.8</java.version>
