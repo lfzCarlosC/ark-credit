@@ -10,6 +10,8 @@ public class UserCredit implements Serializable {
     @Id
     private Long id;
 
+    private Long userId;
+
     /**
      * 积分数
      */
@@ -29,5 +31,13 @@ public class UserCredit implements Serializable {
 
     public void setCredit(int credit) {
         this.credit = credit;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }
