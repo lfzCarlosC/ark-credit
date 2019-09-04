@@ -3,9 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ark-credit.iml" filepath="$PROJECT_DIR$/ark-credit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ark-credit-common/ark-credit-common.iml" filepath="$PROJECT_DIR$/ark-credit-common/ark-credit-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/ark-credit-dal/ark-credit-dal.iml" filepath="$PROJECT_DIR$/ark-credit-dal/ark-credit-dal.iml" />
       <module fileurl="file://$PROJECT_DIR$/ark-credit-service/ark-credit-service.iml" filepath="$PROJECT_DIR$/ark-credit-service/ark-credit-service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ark-credit-common/ark-credit-utils.iml" filepath="$PROJECT_DIR$/ark-credit-common/ark-credit-utils.iml" />
     </modules>
   </component>
 </project>
