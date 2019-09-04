@@ -30,3 +30,4 @@ ark-credit-dal/src/test/
 ark-credit-service/src/test/
 
 .idea/
+/ark-credit.iml

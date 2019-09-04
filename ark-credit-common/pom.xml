@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>ark-credit-utils</artifactId>
-	<name>ark-credit-common</name>
+	<name>ark-credit-utils</name>
 
 	<properties>
 		<java.version>1.8</java.version>
