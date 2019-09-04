@@ -25,9 +25,6 @@
 hs_err_pid*
 
 .gitignore
-ark-credit-common/src/test/
-ark-credit-dal/src/test/
-ark-credit-service/src/test/
 
 .idea
 **/*.iml
