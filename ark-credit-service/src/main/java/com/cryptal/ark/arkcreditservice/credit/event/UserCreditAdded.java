@@ -15,14 +15,14 @@ public class UserCreditAdded extends ApplicationEvent {
     /**
      * 用户新增积分
      */
-    private int credit;
+    private Long credit;
 
     /**
      * 新增积分的原因
      */
     private String reason;
 
-    public UserCreditAdded(Object source,Long userId,int credit,String reason) {
+    public UserCreditAdded(Object source, Long userId, Long credit, String reason) {
         super(source);
         this.userId = userId;
         this.credit = credit;
@@ -37,11 +37,11 @@ public class UserCreditAdded extends ApplicationEvent {
         this.userId = userId;
     }
 
-    public int getCredit() {
+    public Long getCredit() {
         return credit;
     }
 
-    public void setCredit(int credit) {
+    public void setCredit(Long credit) {
         this.credit = credit;
     }
 

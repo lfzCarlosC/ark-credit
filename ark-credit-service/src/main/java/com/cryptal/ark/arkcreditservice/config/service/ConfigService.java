@@ -7,11 +7,11 @@ public interface ConfigService {
      * 邀请新用户奖励
      * @return
      */
-    int getInviteUserReward();
+    Long getInviteUserReward();
 
     /**
      * 新注册用户奖励
      * @return
      */
-    int getNewUserReward();
+    Long getNewUserReward();
 }

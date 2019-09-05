@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
 
         userRepository.save(user);
 
-        publisher.publishEvent(new UserRegistered(this,user.getId(),user.getInviteUserId()));
+        publisher.publishEvent(new UserRegistered(this, user.getId(), user.getInviteUserId()));
 
     }
 

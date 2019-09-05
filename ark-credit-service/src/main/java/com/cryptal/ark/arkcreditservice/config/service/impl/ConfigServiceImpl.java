@@ -12,12 +12,12 @@ public class ConfigServiceImpl implements ConfigService {
     private ConfigRepository configRepository;
 
     @Override
-    public int getInviteUserReward() {
-        return 0;
+    public Long getInviteUserReward() {
+        return 0L;
     }
 
     @Override
-    public int getNewUserReward() {
-        return 0;
+    public Long getNewUserReward() {
+        return 0L;
     }
 }

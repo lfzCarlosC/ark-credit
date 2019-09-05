@@ -5,6 +5,7 @@ import com.cryptal.ark.arkcreditservice.credit.dao.UserCreditRepository;
 import com.cryptal.ark.arkcreditservice.credit.domain.UserCredit;
 import com.cryptal.ark.arkcreditservice.credit.event.UserCreditAdded;
 import com.cryptal.ark.arkcreditservice.credit.service.UserCreditService;
+import com.cryptal.ark.arkcreditservice.user.domain.User;
 import com.cryptal.ark.arkcreditservice.user.event.UserRegistered;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
@@ -29,17 +30,18 @@ public class UserCreditServiceImpl implements UserCreditService {
         userCreditRepository.save(userCredit);
 
         UserCredit invitedUserCredit =  userCreditRepository.findByUserId(event.getInvitedUserId());
-        if(invitedUserCredit!=null){
+        if(invitedUserCredit != null){
             invitedUserCredit.setCredit(invitedUserCredit.getCredit() + configService.getInviteUserReward());
             userCreditRepository.saveAndFlush(invitedUserCredit);
         }
 
-        publisher.publishEvent(new UserCreditAdded(this,event.getUserId(),configService.getNewUserReward(),"新注册用户奖励"));
-        publisher.publishEvent(new UserCreditAdded(this,event.getInvitedUserId(),configService.getInviteUserReward(),"邀请用户奖励"));
-
+        publisher.publishEvent(new UserCreditAdded(this,event.getUserId(), configService.getNewUserReward(),"新注册用户奖励"));
+        publisher.publishEvent(new UserCreditAdded(this,event.getInvitedUserId(), configService.getInviteUserReward(),"邀请用户奖励"));
     }
 
     private UserCredit constructNew(UserRegistered event) {
-        return null;
+        UserCredit userCredit = userCreditRepository.findByUserId(event.getUserId());
+        userCredit.setCredit(configService.getNewUserReward());
+        return userCredit;
     }
 }
