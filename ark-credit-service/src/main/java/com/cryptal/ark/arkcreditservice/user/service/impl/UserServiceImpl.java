@@ -29,7 +29,14 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    @Override
+    public User getUserInforById(Long userId) {
+        return userRepository.getOne(userId);
+    }
+
     private User constructUser(RegisterUserRequest request) {
         return new User();
     }
+
+
 }
