@@ -1,6 +1,6 @@
 package com.cryptal.ark.arkcreditservice.user.service.impl;
 
-import com.cryptal.ark.arkcreditservice.user.dao.UserRepository;
+import com.cryptal.ark.arkcreditservice.user.dao.UserDao;
 import com.cryptal.ark.arkcreditservice.user.domain.User;
 import com.cryptal.ark.arkcreditservice.user.event.UserRegistered;
 import com.cryptal.ark.arkcreditservice.user.request.RegisterUserRequest;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserDao userDao;
 
     @Autowired
     private ApplicationEventPublisher publisher;
@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
 
         User user = constructUser(request);
 
-        userRepository.save(user);
+        userDao.save(user);
 
         publisher.publishEvent(new UserRegistered(this, user.getId(), user.getInviteUserId()));
 
@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserInforById(Long userId) {
-        return userRepository.getOne(userId);
+        return userDao.getOne(userId);
     }
 
     private User constructUser(RegisterUserRequest request) {

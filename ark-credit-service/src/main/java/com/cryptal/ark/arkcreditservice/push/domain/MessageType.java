@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class PushType {
+public class MessageType {
 
     @Id
     private Long id;

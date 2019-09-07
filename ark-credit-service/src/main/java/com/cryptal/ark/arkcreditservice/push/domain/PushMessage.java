@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import java.util.Date;
 
 @Entity
-public class Push {
+public class PushMessage {
 
     @Id
     private long id;
@@ -23,7 +23,7 @@ public class Push {
     /**
      * PUSH分类ID
      */
-    private long typeId;
+    private long messageTypeId;
 
     public long getId() {
         return id;
@@ -49,11 +49,11 @@ public class Push {
         this.pushTime = pushTime;
     }
 
-    public long getTypeId() {
-        return typeId;
+    public long getMessageTypeId() {
+        return messageTypeId;
     }
 
-    public void setTypeId(long typeId) {
-        this.typeId = typeId;
+    public void setMessageTypeId(long messageTypeId) {
+        this.messageTypeId = messageTypeId;
     }
 }

@@ -1,4 +1,4 @@
 package com.cryptal.ark.arkcreditservice.push.service;
 
-public interface PushTypeService {
+public interface MessageTypeService {
 }

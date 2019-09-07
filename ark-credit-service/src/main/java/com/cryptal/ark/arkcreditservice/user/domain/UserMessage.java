@@ -1,11 +1,11 @@
-package com.cryptal.ark.arkcreditservice.message.domain;
+package com.cryptal.ark.arkcreditservice.user.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
 
 @Entity
-public class Message implements Serializable {
+public class UserMessage implements Serializable {
 
     @Id
     private long id;

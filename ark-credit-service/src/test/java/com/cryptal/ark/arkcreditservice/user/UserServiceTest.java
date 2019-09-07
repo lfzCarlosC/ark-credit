@@ -2,13 +2,14 @@ package com.cryptal.ark.arkcreditservice.user;
 
 import static org.mockito.Mockito.when;
 
-import org.junit.Test;
+import com.cryptal.ark.arkcreditservice.user.domain.Device;
+import com.cryptal.ark.arkcreditservice.user.service.DeviceService;
+import com.cryptal.ark.arkcreditservice.user.service.impl.DeviceServiceImpl;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import com.cryptal.ark.arkcreditservice.user.dao.UserRepository;
+import com.cryptal.ark.arkcreditservice.user.dao.UserDao;
 import com.cryptal.ark.arkcreditservice.user.domain.User;
 import com.cryptal.ark.arkcreditservice.user.request.RegisterUserRequest;
 import com.cryptal.ark.arkcreditservice.user.service.UserService;
@@ -20,7 +21,9 @@ public class UserServiceTest {
     private UserService userService = new UserServiceImpl();
 
     @Mock
-    private UserRepository userRepository;
+    private UserDao userDao;
+
+    private DeviceService deviceService = new DeviceServiceImpl();
 
     @Mock
     private User user;
@@ -38,11 +41,21 @@ public class UserServiceTest {
     public void test_user_getUserInfo() {
         Long userId = 11L;
         String name = "testUser";
-        when(userRepository.getOne(userId)).thenReturn(user);
+        when(userDao.getOne(userId)).thenReturn(user);
         when(user.getId()).thenReturn(userId);
         when(user.getUsername()).thenReturn(name);
         userService.getUserInforById(userId);
 
+    }
+
+    /**
+     * 用户添加用户设备
+     */
+    public void test_add_device(){
+        Device device = new Device();
+        device.setUserId(1L);
+        device.setName("设备名称");
+        deviceService.insert(device);
     }
 
 }
