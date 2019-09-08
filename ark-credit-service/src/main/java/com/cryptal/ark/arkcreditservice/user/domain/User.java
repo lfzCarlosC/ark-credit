@@ -27,6 +27,11 @@ public class User implements Serializable {
      */
     private Long inviteUserId;
 
+    /**
+     * 等级ID
+     */
+    private Long rankId;
+
     public Long getId() {
         return id;
     }
@@ -65,5 +70,13 @@ public class User implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Long getRankId() {
+        return rankId;
+    }
+
+    public void setRankId(Long rankId) {
+        this.rankId = rankId;
     }
 }

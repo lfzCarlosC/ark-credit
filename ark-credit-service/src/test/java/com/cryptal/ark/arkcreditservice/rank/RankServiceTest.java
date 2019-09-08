@@ -1,12 +1,12 @@
 package com.cryptal.ark.arkcreditservice.rank;
 
+import com.cryptal.ark.arkcreditservice.member.service.MemberRankService;
+import com.cryptal.ark.arkcreditservice.member.service.impl.MemberRankServiceImpl;
 import com.cryptal.ark.arkcreditservice.rank.domain.Rank;
 import com.cryptal.ark.arkcreditservice.rank.service.RankMessageTypeService;
 import com.cryptal.ark.arkcreditservice.rank.service.RankService;
-import com.cryptal.ark.arkcreditservice.user.service.UserRankService;
 import com.cryptal.ark.arkcreditservice.rank.service.impl.RankMessageTypeServiceImpl;
 import com.cryptal.ark.arkcreditservice.rank.service.impl.RankServiceImpl;
-import com.cryptal.ark.arkcreditservice.user.service.impl.UserRankServiceImpl;
 import org.junit.Test;
 
 public class RankServiceTest {
@@ -15,7 +15,7 @@ public class RankServiceTest {
 
     private RankService rankService = new RankServiceImpl();
 
-    private UserRankService userRankService = new UserRankServiceImpl();
+    private MemberRankService memberRankService = new MemberRankServiceImpl();
 
     /**
      * 用例：增加新的等级
@@ -39,17 +39,5 @@ public class RankServiceTest {
 
     }
 
-    /**
-     * 用例：绑定等级和用户的关系
-     */
-    @Test
-    public void test_bind_rank_user(){
-
-        Long rankId = 1L;
-        Long userId = 1L;
-        int delayDays = 365;
-        userRankService.bindRankWithUserId(userId, rankId,delayDays);
-
-    }
 
 }

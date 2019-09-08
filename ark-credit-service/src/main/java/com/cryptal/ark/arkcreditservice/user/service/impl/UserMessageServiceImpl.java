@@ -3,7 +3,7 @@ package com.cryptal.ark.arkcreditservice.user.service.impl;
 import com.cryptal.ark.arkcreditservice.credit.event.UserCreditAdded;
 import com.cryptal.ark.arkcreditservice.user.dao.UserMessageDao;
 import com.cryptal.ark.arkcreditservice.user.domain.UserMessage;
-import com.cryptal.ark.arkcreditservice.user.event.UserExpired;
+import com.cryptal.ark.arkcreditservice.member.event.MemberExpired;
 import com.cryptal.ark.arkcreditservice.user.service.UserMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,7 +21,7 @@ public class UserMessageServiceImpl implements UserMessageService {
     }
 
     @Override
-    public void receiveUserExpired(UserExpired event) {
+    public void receiveUserExpired(MemberExpired event) {
 
     }
 

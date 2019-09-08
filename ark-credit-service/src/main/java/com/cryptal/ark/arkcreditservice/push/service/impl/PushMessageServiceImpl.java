@@ -8,7 +8,7 @@ import com.cryptal.ark.arkcreditservice.push.event.PushMessageSent;
 import com.cryptal.ark.arkcreditservice.push.service.PushMessageService;
 import com.cryptal.ark.arkcreditservice.rank.domain.RankMessageType;
 import com.cryptal.ark.arkcreditservice.rank.service.RankMessageTypeService;
-import com.cryptal.ark.arkcreditservice.user.service.UserRankService;
+import com.cryptal.ark.arkcreditservice.member.service.MemberRankService;
 import com.cryptal.ark.arkcreditservice.user.domain.Device;
 import com.cryptal.ark.arkcreditservice.user.service.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class PushMessageServiceImpl implements PushMessageService {
     private RankMessageTypeService rankMessageTypeService;
 
     @Autowired
-    private UserRankService userRankService;
+    private MemberRankService memberRankService;
 
     @Autowired
     private DeviceService deviceService;
@@ -56,12 +56,14 @@ public class PushMessageServiceImpl implements PushMessageService {
         publisher.publishEvent(new PushMessageReceived(this,pushMessage));
     }
 
+
+
     @Override
     public void send(PushMessage pushMessage) {
         List<RankMessageType> rankMessageTypeList = rankMessageTypeService.findByMessageTypeId(pushMessage.getMessageTypeId());
         for (RankMessageType rankMessageType : rankMessageTypeList) {
-            List<Long> userIds = userRankService.findUserIdsByRankId(rankMessageType.getRankId());
-            List<Device> devices = deviceService.findByIds(userIds);
+            List<Long> memberUserIds = memberRankService.findUserIdsByRankId(rankMessageType.getRankId());
+            List<Device> devices = deviceService.findByIds(memberUserIds);
             for (Device device : devices) {
                 SendResult sendResult = sendPushMessage(device);
                 publisher.publishEvent(new PushMessageSent(this,pushMessage,device,rankMessageType,sendResult));

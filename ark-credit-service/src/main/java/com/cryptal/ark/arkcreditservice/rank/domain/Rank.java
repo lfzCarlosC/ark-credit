@@ -15,6 +15,13 @@ public class Rank implements Serializable {
 
     private String name;
 
+    public Rank() {
+    }
+
+    public Rank(Long rankId, String name) {
+
+    }
+
     public Long getId() {
         return id;
     }
