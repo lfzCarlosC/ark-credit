@@ -1,6 +1,7 @@
 package com.cryptal.ark.arkcreditservice.member.service;
 
 import com.cryptal.ark.arkcreditservice.member.domain.MemberRank;
+import com.cryptal.ark.arkcreditservice.rank.domain.RankConstant;
 
 import java.util.List;
 
@@ -25,4 +26,19 @@ public interface MemberRankService {
      * @param userId
      */
     void removeMember(Long userId);
+
+    /**
+     * 设置用户为某个等级多少天
+     * @param userId
+     * @param rankId
+     * @param days
+     */
+    void assignUserWithRank(Long userId, Long rankId, int days);
+
+    /**
+     * 添加会员
+     * @param userId
+     * @param normalUser
+     */
+    void addMember(Long userId, RankConstant normalUser);
 }

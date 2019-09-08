@@ -1,7 +1,8 @@
 package com.cryptal.ark.arkcreditservice.user.service;
 
-import com.cryptal.ark.arkcreditservice.credit.event.UserCreditAdded;
-import com.cryptal.ark.arkcreditservice.member.event.MemberExpired;
+import com.cryptal.ark.arkcreditservice.user.event.UserCreditAdded;
+import com.cryptal.ark.arkcreditservice.order.event.OrderCreated;
+import com.cryptal.ark.arkcreditservice.user.event.UserRankExpired;
 
 public interface UserMessageService {
     /**
@@ -14,5 +15,12 @@ public interface UserMessageService {
      * 处理用户会员过期的问题
      * @param event
      */
-    void receiveUserExpired(MemberExpired event);
+    void receiveUserExpired(UserRankExpired event);
+
+    /**
+     * 处理下单事件
+     * @param event
+     */
+    void receiveOrderCreated(OrderCreated event);
+
 }

@@ -6,6 +6,8 @@ public class RegisterUserRequest implements Serializable {
 
     private String username;
 
+    private Long invitedUserId;
+
     private String authorizeCode;
 
     public String getUsername() {
@@ -22,5 +24,13 @@ public class RegisterUserRequest implements Serializable {
 
     public void setAuthorizeCode(String authorizeCode) {
         this.authorizeCode = authorizeCode;
+    }
+
+    public Long getInvitedUserId() {
+        return invitedUserId;
+    }
+
+    public void setInvitedUserId(Long invitedUserId) {
+        this.invitedUserId = invitedUserId;
     }
 }

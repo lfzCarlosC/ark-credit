@@ -49,7 +49,7 @@ public class UserServiceTest {
     }
 
     /**
-     * 用户添加用户设备
+     * 用例：用户添加用户设备
      */
     public void test_add_device(){
         Device device = new Device();

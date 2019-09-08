@@ -2,8 +2,10 @@ package com.cryptal.ark.arkcreditservice.member.service.impl;
 
 import com.cryptal.ark.arkcreditservice.member.dao.MemberRankDao;
 import com.cryptal.ark.arkcreditservice.member.domain.MemberRank;
-import com.cryptal.ark.arkcreditservice.member.event.MemberExpired;
 import com.cryptal.ark.arkcreditservice.member.service.MemberRankService;
+import com.cryptal.ark.arkcreditservice.rank.domain.RankConstant;
+import com.cryptal.ark.arkcreditservice.user.event.UserRankAssigned;
+import com.cryptal.ark.arkcreditservice.user.event.UserRankExpired;
 import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
@@ -36,12 +38,22 @@ public class MemberRankServiceImpl implements MemberRankService {
     public void removeExpireMembers() {
         List<MemberRank> memberRankList = findExpiredMembers();
         for (MemberRank memberRank : memberRankList) {
-            publisher.publishEvent(new MemberExpired(this, memberRank.getUserId()));
+            publisher.publishEvent(new UserRankExpired(this, memberRank.getUserId()));
         }
     }
 
     @Override
     public void removeMember(Long userId) {
+
+    }
+
+    @Override
+    public void assignUserWithRank(Long userId, Long rankId, int days) {
+        publisher.publishEvent(new UserRankAssigned(this,userId,rankId,days));
+    }
+
+    @Override
+    public void addMember(Long userId, RankConstant normalUser) {
 
     }
 

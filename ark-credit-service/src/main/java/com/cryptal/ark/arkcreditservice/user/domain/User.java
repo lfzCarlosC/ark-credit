@@ -32,6 +32,11 @@ public class User implements Serializable {
      */
     private Long rankId;
 
+    /**
+     * 积分
+     */
+    private Long credit;
+
     public Long getId() {
         return id;
     }
@@ -78,5 +83,13 @@ public class User implements Serializable {
 
     public void setRankId(Long rankId) {
         this.rankId = rankId;
+    }
+
+    public Long getCredit() {
+        return credit;
+    }
+
+    public void setCredit(Long credit) {
+        this.credit = credit;
     }
 }

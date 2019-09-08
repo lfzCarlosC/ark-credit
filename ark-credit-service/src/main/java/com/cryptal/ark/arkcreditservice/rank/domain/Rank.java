@@ -15,6 +15,11 @@ public class Rank implements Serializable {
 
     private String name;
 
+    /**
+     * 回扣比例
+     */
+    private Double rebateRatio;
+
     public Rank() {
     }
 

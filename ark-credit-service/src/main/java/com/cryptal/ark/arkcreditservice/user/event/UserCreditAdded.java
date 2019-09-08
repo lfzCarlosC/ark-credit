@@ -1,4 +1,4 @@
-package com.cryptal.ark.arkcreditservice.credit.event;
+package com.cryptal.ark.arkcreditservice.user.event;
 
 import org.springframework.context.ApplicationEvent;
 
