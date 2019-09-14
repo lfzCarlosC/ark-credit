@@ -18,7 +18,7 @@ public interface UserService {
      * 显示用户信息
      * @param userId
      */
-    User getUserInforById(Long userId);
+    User getUserInfoById(Long userId);
 
     /**
      * 更新用户等级

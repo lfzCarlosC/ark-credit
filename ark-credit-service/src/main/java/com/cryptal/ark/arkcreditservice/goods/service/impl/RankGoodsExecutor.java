@@ -3,7 +3,7 @@ package com.cryptal.ark.arkcreditservice.goods.service.impl;
 import com.cryptal.ark.arkcreditservice.goods.domain.RankGoods;
 import com.cryptal.ark.arkcreditservice.goods.service.GoodsExecutor;
 import com.cryptal.ark.arkcreditservice.goods.service.RankGoodsService;
-import com.cryptal.ark.arkcreditservice.member.service.MemberRankService;
+import com.cryptal.ark.arkcreditservice.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +14,7 @@ public class RankGoodsExecutor implements GoodsExecutor {
     private RankGoodsService rankGoodsService;
 
     @Autowired
-    private MemberRankService memberRankService;
+    private MemberService memberService;
 
     /**
      * 找到商品对应的等级，将用户设置为该等级
@@ -25,7 +25,7 @@ public class RankGoodsExecutor implements GoodsExecutor {
     public void execute(Long goodsId, Long userId) {
 
         RankGoods rankGoods = rankGoodsService.findByGoodsId(goodsId);
-        memberRankService.assignUserWithRank(userId,rankGoods.getRankId(),rankGoods.getDays());
+        memberService.assignUserWithRank(userId,rankGoods.getRankId(),rankGoods.getDays());
 
     }
 

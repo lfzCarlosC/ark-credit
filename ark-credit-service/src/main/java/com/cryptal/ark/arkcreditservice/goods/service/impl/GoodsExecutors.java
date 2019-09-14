@@ -16,7 +16,7 @@ public class GoodsExecutors {
 
     public GoodsExecutor findCurrent(GoodsType goodsType) {
         switch (goodsType){
-            case RANK:
+            case MemberRANK:
                 return rankGoodsExecutor;
             default:
                 return commonGoodsExecutor;

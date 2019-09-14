@@ -1,30 +1,29 @@
 package com.cryptal.ark.arkcreditservice.rank;
 
-import com.cryptal.ark.arkcreditservice.member.service.MemberRankService;
-import com.cryptal.ark.arkcreditservice.member.service.impl.MemberRankServiceImpl;
-import com.cryptal.ark.arkcreditservice.rank.domain.Rank;
+import com.cryptal.ark.arkcreditservice.rank.domain.MemberRank;
+import com.cryptal.ark.arkcreditservice.rank.service.MemberRankService;
 import com.cryptal.ark.arkcreditservice.rank.service.RankMessageTypeService;
-import com.cryptal.ark.arkcreditservice.rank.service.RankService;
+import com.cryptal.ark.arkcreditservice.rank.service.impl.MemberRankServiceImpl;
 import com.cryptal.ark.arkcreditservice.rank.service.impl.RankMessageTypeServiceImpl;
-import com.cryptal.ark.arkcreditservice.rank.service.impl.RankServiceImpl;
 import org.junit.Test;
 
-public class RankServiceTest {
+public class MemberMemberServiceTest {
 
     private RankMessageTypeService rankMessageTypeService = new RankMessageTypeServiceImpl();
-
-    private RankService rankService = new RankServiceImpl();
 
     private MemberRankService memberRankService = new MemberRankServiceImpl();
 
     /**
-     * 用例：增加新的等级
+     * 用例：创建修改，等级的佣金比例，价格
      */
     @Test
     public void test_add_new_rank(){
-        Rank rank = new Rank();
-        rank.setName("黄金会员");
-        rankService.insert(rank);
+        MemberRank memberRank = new MemberRank();
+        memberRank.setName("黄金会员");
+        memberRank.setRebatePercentLevel1(20);
+        memberRank.setRebatePercentLevel2(10);
+        memberRank.setRebatePercentLevel3(5);
+        memberRankService.insert(memberRank);
     }
 
     /**

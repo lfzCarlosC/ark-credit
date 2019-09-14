@@ -1,6 +1,6 @@
 package com.cryptal.ark.arkcreditservice.timer;
 
-import com.cryptal.ark.arkcreditservice.member.service.MemberRankService;
+import com.cryptal.ark.arkcreditservice.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class ExpireUserTimer {
 
     @Autowired
-    private MemberRankService memberRankService;
+    private MemberService memberService;
 
     @Autowired
     private ApplicationEventPublisher publisher;
@@ -19,7 +19,7 @@ public class ExpireUserTimer {
      */
     public void expireMember(){
 
-        memberRankService.removeExpireMembers();
+        memberService.removeExpireMembers();
 
     }
 

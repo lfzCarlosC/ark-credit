@@ -2,10 +2,12 @@ package com.cryptal.ark.arkcreditservice.user.event;
 
 import org.springframework.context.ApplicationEvent;
 
+import java.math.BigDecimal;
+
 /**
  * 用户积分被减少
  */
-public class UserCreditReduced extends ApplicationEvent {
+public class UserBalanceReduced extends ApplicationEvent {
 
     /**
      * 用户ID
@@ -15,17 +17,17 @@ public class UserCreditReduced extends ApplicationEvent {
     /**
      * 用户新增积分
      */
-    private Long credit;
+    private BigDecimal paymentAmount;
 
     /**
      * 新增积分的原因
      */
     private String reason;
 
-    public UserCreditReduced(Object source, Long userId, Long credit, String reason) {
+    public UserBalanceReduced(Object source, Long userId, BigDecimal credit, String reason) {
         super(source);
         this.userId = userId;
-        this.credit = credit;
+        this.paymentAmount = credit;
         this.reason = reason;
     }
 
@@ -37,19 +39,19 @@ public class UserCreditReduced extends ApplicationEvent {
         this.userId = userId;
     }
 
-    public Long getCredit() {
-        return credit;
-    }
-
-    public void setCredit(Long credit) {
-        this.credit = credit;
-    }
-
     public String getReason() {
         return reason;
     }
 
     public void setReason(String reason) {
         this.reason = reason;
+    }
+
+    public BigDecimal getPaymentAmount() {
+        return paymentAmount;
+    }
+
+    public void setPaymentAmount(BigDecimal paymentAmount) {
+        this.paymentAmount = paymentAmount;
     }
 }

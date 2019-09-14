@@ -29,12 +29,14 @@ public class UserServiceTest {
     private User user;
 
     /**
-     * 用例一：用户注册
+     * 用例：用户注册
      */
     public void test_user_register() {
 
         RegisterUserRequest request = new RegisterUserRequest();
-
+        request.setUsername("admin");
+        request.setPassword("123456");
+        request.setInvitedUserId(2L);
         userService.register(request);
     }
 
@@ -44,8 +46,7 @@ public class UserServiceTest {
         when(userDao.getOne(userId)).thenReturn(user);
         when(user.getId()).thenReturn(userId);
         when(user.getUsername()).thenReturn(name);
-        userService.getUserInforById(userId);
-
+        userService.getUserInfoById(userId);
     }
 
     /**

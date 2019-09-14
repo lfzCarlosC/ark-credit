@@ -1,31 +1,19 @@
-package com.cryptal.ark.arkcreditservice.rank.domain;
+package com.cryptal.ark.arkcreditservice.goods.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
- * 等级
+ * 商品分类
  */
 @Entity
-public class Rank implements Serializable {
+public class GoodsCategory implements Serializable {
 
     @Id
     private Long id;
 
     private String name;
-
-    /**
-     * 回扣比例
-     */
-    private Double rebateRatio;
-
-    public Rank() {
-    }
-
-    public Rank(Long rankId, String name) {
-
-    }
 
     public Long getId() {
         return id;

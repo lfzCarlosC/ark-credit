@@ -31,6 +31,16 @@ public class GoodsServiceImpl implements GoodsService {
 
     }
 
+    @Override
+    public Goods findById(Long id) {
+        return null;
+    }
+
+    @Override
+    public void save(Goods goods) {
+
+    }
+
     /**
      * 扣减商品库存
      * @param goodsId
@@ -41,11 +51,6 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     private void executeGoods(OrderCreated event) {
-        Optional<Goods> goodsOption = goodsDao.findById(event.getGoodsId());
-        if(goodsOption.isPresent()){
-            GoodsExecutor goodsExecutor = goodsExecutors.findCurrent(goodsOption.get().getGoodsType());
-            goodsExecutor.execute(event.getGoodsId(),event.getUserId());
-        }
     }
 
 }

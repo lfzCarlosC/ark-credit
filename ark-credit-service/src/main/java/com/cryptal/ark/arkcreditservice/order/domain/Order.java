@@ -3,6 +3,7 @@ package com.cryptal.ark.arkcreditservice.order.domain;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity(name = "credit_order")
@@ -29,7 +30,7 @@ public class Order implements Serializable {
     /**
      * 使用的积分
      */
-    private Long credit;
+    private BigDecimal price;
 
     /**
      * 下单时间
@@ -61,14 +62,6 @@ public class Order implements Serializable {
         this.userId = userId;
     }
 
-    public Long getCredit() {
-        return credit;
-    }
-
-    public void setCredit(Long credit) {
-        this.credit = credit;
-    }
-
     public Long getSkuId() {
         return skuId;
     }
@@ -83,5 +76,13 @@ public class Order implements Serializable {
 
     public void setSkuNum(Long skuNum) {
         this.skuNum = skuNum;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 }

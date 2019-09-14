@@ -3,9 +3,10 @@ package com.cryptal.ark.arkcreditservice.goods.domain;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Entity
-public class Sku implements Serializable {
+public class GoodsSku implements Serializable {
 
     @Id
     private Long id;
@@ -23,7 +24,7 @@ public class Sku implements Serializable {
     /**
      * 所需积分
      */
-    private Long credit;
+    private BigDecimal price;
 
     /**
      * 库存数
@@ -34,6 +35,7 @@ public class Sku implements Serializable {
      * 是否在售
      */
     private boolean onSale;
+
 
     public Long getId() {
         return id;
@@ -59,14 +61,6 @@ public class Sku implements Serializable {
         this.skuName = skuName;
     }
 
-    public Long getCredit() {
-        return credit;
-    }
-
-    public void setCredit(Long credit) {
-        this.credit = credit;
-    }
-
     public Long getStock() {
         return stock;
     }
@@ -81,5 +75,13 @@ public class Sku implements Serializable {
 
     public void setOnSale(boolean onSale) {
         this.onSale = onSale;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 }

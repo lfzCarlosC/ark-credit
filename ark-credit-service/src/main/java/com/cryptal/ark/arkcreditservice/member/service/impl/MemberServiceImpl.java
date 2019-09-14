@@ -1,8 +1,8 @@
 package com.cryptal.ark.arkcreditservice.member.service.impl;
 
-import com.cryptal.ark.arkcreditservice.member.dao.MemberRankDao;
+import com.cryptal.ark.arkcreditservice.member.dao.MemberDao;
 import com.cryptal.ark.arkcreditservice.member.domain.MemberRank;
-import com.cryptal.ark.arkcreditservice.member.service.MemberRankService;
+import com.cryptal.ark.arkcreditservice.member.service.MemberService;
 import com.cryptal.ark.arkcreditservice.rank.domain.RankConstant;
 import com.cryptal.ark.arkcreditservice.user.event.UserRankAssigned;
 import com.cryptal.ark.arkcreditservice.user.event.UserRankExpired;
@@ -14,10 +14,10 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class MemberRankServiceImpl implements MemberRankService {
+public class MemberServiceImpl implements MemberService {
 
     @Autowired
-    private MemberRankDao memberRankDao;
+    private MemberDao memberDao;
 
     @Autowired
     private ApplicationEventPublisher publisher;

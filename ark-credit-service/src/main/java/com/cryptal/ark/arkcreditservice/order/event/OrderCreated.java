@@ -2,6 +2,8 @@ package com.cryptal.ark.arkcreditservice.order.event;
 
 import org.springframework.context.ApplicationEvent;
 
+import java.math.BigDecimal;
+
 public class OrderCreated extends ApplicationEvent {
 
     private Long orderId;
@@ -10,16 +12,16 @@ public class OrderCreated extends ApplicationEvent {
 
     private Long userId;
 
-    private Long credit;
+    private BigDecimal paymentAmount;
 
     private Long count;
 
-    public OrderCreated(Object source, Long orderId, Long goodsId, Long userId,Long credit,Long count) {
+    public OrderCreated(Object source, Long orderId, Long goodsId, Long userId, BigDecimal paymentAmount, Long count) {
         super(source);
         this.orderId = orderId;
         this.goodsId = goodsId;
         this.userId = userId;
-        this.credit = credit;
+        this.paymentAmount = paymentAmount;
         this.count = count;
     }
 
@@ -47,13 +49,7 @@ public class OrderCreated extends ApplicationEvent {
         this.userId = userId;
     }
 
-    public Long getCredit() {
-        return credit;
-    }
 
-    public void setCredit(Long credit) {
-        this.credit = credit;
-    }
 
     public Long getCount() {
         return count;
@@ -61,5 +57,13 @@ public class OrderCreated extends ApplicationEvent {
 
     public void setCount(Long count) {
         this.count = count;
+    }
+
+    public BigDecimal getPaymentAmount() {
+        return paymentAmount;
+    }
+
+    public void setPaymentAmount(BigDecimal paymentAmount) {
+        this.paymentAmount = paymentAmount;
     }
 }

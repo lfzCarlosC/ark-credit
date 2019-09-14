@@ -9,6 +9,7 @@ public class RegisterUserRequest implements Serializable {
     private Long invitedUserId;
 
     private String authorizeCode;
+    private String password;
 
     public String getUsername() {
         return username;
@@ -32,5 +33,13 @@ public class RegisterUserRequest implements Serializable {
 
     public void setInvitedUserId(Long invitedUserId) {
         this.invitedUserId = invitedUserId;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }

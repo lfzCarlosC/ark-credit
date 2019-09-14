@@ -3,7 +3,7 @@ package com.cryptal.ark.arkcreditservice.user.domain;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
-import java.util.List;
+import java.math.BigDecimal;
 
 @Entity
 public class User implements Serializable {
@@ -16,6 +16,11 @@ public class User implements Serializable {
      */
     private String username;
 
+    /**
+     * 密码
+     */
+    private String password;
+
     private String tel;
 
     private String address;
@@ -23,9 +28,19 @@ public class User implements Serializable {
     //后期要加入头像 profilePicture bankcards
 
     /**
-     * 邀请用户
+     * 邀请用户(一级)
      */
-    private Long inviteUserId;
+    private Long inviteUserId1;
+
+    /**
+     * 邀请用户(二级)
+     */
+    private Long inviteUserId2;
+
+    /**
+     * 邀请用户(三级)
+     */
+    private Long inviteUserId3;
 
     /**
      * 等级ID
@@ -35,7 +50,7 @@ public class User implements Serializable {
     /**
      * 积分
      */
-    private Long credit;
+    private BigDecimal balance;
 
     public Long getId() {
         return id;
@@ -45,12 +60,12 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public Long getInviteUserId() {
-        return inviteUserId;
+    public Long getInviteUserId1() {
+        return inviteUserId1;
     }
 
-    public void setInviteUserId(Long inviteUserId) {
-        this.inviteUserId = inviteUserId;
+    public void setInviteUserId1(Long inviteUserId1) {
+        this.inviteUserId1 = inviteUserId1;
     }
 
     public String getUsername() {
@@ -85,11 +100,35 @@ public class User implements Serializable {
         this.rankId = rankId;
     }
 
-    public Long getCredit() {
-        return credit;
+    public BigDecimal getBalance() {
+        return balance;
     }
 
-    public void setCredit(Long credit) {
-        this.credit = credit;
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Long getInviteUserId2() {
+        return inviteUserId2;
+    }
+
+    public void setInviteUserId2(Long inviteUserId2) {
+        this.inviteUserId2 = inviteUserId2;
+    }
+
+    public Long getInviteUserId3() {
+        return inviteUserId3;
+    }
+
+    public void setInviteUserId3(Long inviteUserId3) {
+        this.inviteUserId3 = inviteUserId3;
     }
 }

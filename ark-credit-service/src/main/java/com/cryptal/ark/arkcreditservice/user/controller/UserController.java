@@ -35,6 +35,6 @@ public class UserController {
     public @ResponseBody ResponseEntity getUserInfoById(
             @PathVariable("id") @ApiParam(value = "USER ID", required = true)
             final Long id) {
-        return new ResponseEntity(userService.getUserInforById(id), HttpStatus.OK);
+        return new ResponseEntity(userService.getUserInfoById(id), HttpStatus.OK);
     }
 }

@@ -4,6 +4,8 @@ import com.cryptal.ark.arkcreditservice.order.request.CreateOrderRequest;
 import com.cryptal.ark.arkcreditservice.order.service.OrderService;
 import com.cryptal.ark.arkcreditservice.order.service.impl.OrderServiceImpl;
 
+import java.math.BigDecimal;
+
 public class OrderServiceTest {
 
     private OrderService orderService = new OrderServiceImpl();
@@ -16,7 +18,7 @@ public class OrderServiceTest {
         CreateOrderRequest request = new CreateOrderRequest();
         request.setUserId(0L);
         request.setSkuId(0L);
-        request.setCredit(200);
+        request.setPrice(new BigDecimal(100));
         orderService.create(request);
 
     }

@@ -1,7 +1,7 @@
 package com.cryptal.ark.arkcreditservice.user.service.impl;
 
 import com.cryptal.ark.arkcreditservice.order.event.OrderCreated;
-import com.cryptal.ark.arkcreditservice.user.event.UserCreditAdded;
+import com.cryptal.ark.arkcreditservice.user.event.UserAmountAdded;
 import com.cryptal.ark.arkcreditservice.user.dao.UserMessageDao;
 import com.cryptal.ark.arkcreditservice.user.domain.UserMessage;
 import com.cryptal.ark.arkcreditservice.user.event.UserRankExpired;
@@ -16,7 +16,7 @@ public class UserMessageServiceImpl implements UserMessageService {
     private UserMessageDao userMessageDao;
 
     @Override
-    public void receiveCreditAdded(UserCreditAdded event) {
+    public void receiveCreditAdded(UserAmountAdded event) {
         UserMessage userMessage = constructCreditAddedMessage();
         userMessageDao.save(userMessage);
     }

@@ -1,5 +1,7 @@
 package com.cryptal.ark.arkcreditservice.order.request;
 
+import java.math.BigDecimal;
+
 public class CreateOrderRequest {
 
     /**
@@ -15,7 +17,7 @@ public class CreateOrderRequest {
     /**
      * 使用的积分
      */
-    private long credit;
+    private BigDecimal price;
 
     public void setUserId(long userId) {
         this.userId = userId;
@@ -33,11 +35,11 @@ public class CreateOrderRequest {
         this.skuId = skuId;
     }
 
-    public long getCredit() {
-        return credit;
+    public BigDecimal getPrice() {
+        return price;
     }
 
-    public void setCredit(long credit) {
-        this.credit = credit;
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 }

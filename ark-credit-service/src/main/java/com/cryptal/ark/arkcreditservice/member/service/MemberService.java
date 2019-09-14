@@ -5,7 +5,7 @@ import com.cryptal.ark.arkcreditservice.rank.domain.RankConstant;
 
 import java.util.List;
 
-public interface MemberRankService {
+public interface MemberService {
 
     List<Long> findUserIdsByRankId(Long rankId);
 

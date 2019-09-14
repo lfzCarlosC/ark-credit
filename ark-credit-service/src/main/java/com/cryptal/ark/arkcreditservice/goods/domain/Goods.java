@@ -11,7 +11,13 @@ public class Goods {
 
     private String goodsName;
 
-    private GoodsType goodsType;
+    /**
+     * 分类ID
+     */
+    private Long categoryId;
+
+
+
 
     public Long getId() {
         return id;
@@ -29,11 +35,11 @@ public class Goods {
         this.goodsName = goodsName;
     }
 
-    public GoodsType getGoodsType() {
-        return goodsType;
+    public Long getCategoryId() {
+        return categoryId;
     }
 
-    public void setGoodsType(GoodsType goodsType) {
-        this.goodsType = goodsType;
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
 }
