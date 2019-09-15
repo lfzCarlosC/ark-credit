@@ -1,5 +1,6 @@
 package com.cryptal.ark.arkcreditservice.member.eventhandler;
 
+import com.cryptal.ark.arkcreditservice.member.event.MemberRankOrdered;
 import com.cryptal.ark.arkcreditservice.rank.domain.RankConstant;
 import com.cryptal.ark.arkcreditservice.user.event.UserRankExpired;
 import com.cryptal.ark.arkcreditservice.member.service.MemberService;
@@ -26,6 +27,15 @@ public class MemberEventHandler {
     @EventListener
     public void handle(UserRegistered event){
         memberService.addMember(event.getUserId(), RankConstant.NORMAL_USER);
+    }
+
+    /**
+     * 新注册用户，三天普通用户
+     * @param event
+     */
+    @EventListener
+    public void handle(MemberRankOrdered event){
+        memberService.handleOrdered(event);
     }
 
 }

@@ -1,6 +1,7 @@
 package com.cryptal.ark.arkcreditservice.member.service;
 
 import com.cryptal.ark.arkcreditservice.member.domain.MemberRank;
+import com.cryptal.ark.arkcreditservice.member.event.MemberRankOrdered;
 import com.cryptal.ark.arkcreditservice.rank.domain.RankConstant;
 
 import java.util.List;
@@ -41,4 +42,10 @@ public interface MemberService {
      * @param normalUser
      */
     void addMember(Long userId, RankConstant normalUser);
+
+    /**
+     * 处理等级会员被下单事件
+     * @param event
+     */
+    void handleOrdered(MemberRankOrdered event);
 }

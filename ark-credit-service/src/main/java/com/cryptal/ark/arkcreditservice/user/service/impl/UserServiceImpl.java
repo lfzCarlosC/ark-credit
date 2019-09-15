@@ -1,5 +1,6 @@
 package com.cryptal.ark.arkcreditservice.user.service.impl;
 
+import com.cryptal.ark.arkcreditservice.common.EncryptUtil;
 import com.cryptal.ark.arkcreditservice.common.exp.CreditException;
 import com.cryptal.ark.arkcreditservice.order.event.OrderCreated;
 import com.cryptal.ark.arkcreditservice.rank.domain.RankConstant;
@@ -16,6 +17,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.Optional;
 
 @Component
@@ -53,19 +55,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void handleUserRegister(UserRegistered event) {
+
+
+
     }
 
     @Override
     public void handleOrderCreated(OrderCreated event) {
 
         //购买用户本身扣积分
-        Optional<User> userOption = userDao.findById(event.getUserId());
-
-        if(!userOption.isPresent()){
-            throw new CreditException("下单用户ID不存在，userId=" + event.getUserId());
-        }
-
-        User user = userOption.get();
+        User user = checkAndFindById(event.getUserId());
         user.setBalance(user.getBalance().subtract(event.getPaymentAmount()));
         userDao.save(user);
         publisher.publishEvent(new UserBalanceReduced(this,event.getUserId(),event.getPaymentAmount(),"下单扣减积分"));
@@ -91,20 +90,46 @@ public class UserServiceImpl implements UserService {
      * @param level
      */
     private void handleInviteUser(BigDecimal paymentAmount, Long inviteUserId, int level) {
-        Optional<User> inviteUserOption = userDao.findById(inviteUserId);
-        if (!inviteUserOption.isPresent()) {
-            throw new CreditException("下单用户的邀请用户ID不存在，userId=" + inviteUserId);
-        }
-        User invitedUser = inviteUserOption.get();
+        User invitedUser = checkAndFindById(inviteUserId);
         int rebatePercent = memberRankService.computeRebatePercent(invitedUser.getRankId(), level);
         BigDecimal rebateAmount = paymentAmount.multiply(new BigDecimal(rebatePercent / 100));
         invitedUser.setBalance(invitedUser.getBalance().add(rebateAmount));
-
         publisher.publishEvent(new UserAmountAdded(this, invitedUser.getId(), rebateAmount, "邀请用户付款赠予积分"));
     }
 
+    /**
+     * 根据用户ID获取用户信息
+     * @param inviteUserId
+     * @return
+     */
+    private User checkAndFindById(Long inviteUserId) {
+        Optional<User> inviteUserOption = userDao.findById(inviteUserId);
+        if (!inviteUserOption.isPresent()) {
+            throw new CreditException("用户信息不存在：" + inviteUserId);
+        }
+        return inviteUserOption.get();
+    }
+
+    /**
+     * 构造登录信息
+     * @param request
+     * @return
+     */
     private User constructUser(RegisterUserRequest request) {
-        return new User();
+        User user = new User();
+        user.setBalance(new BigDecimal(0));
+        user.setUsername(request.getUsername());
+        user.setInviteUserId1(request.getInvitedUserId());
+        user.setPassword(EncryptUtil.md5(request.getPassword()));
+        user.setCreateTime(new Date());
+
+        if(request.getInvitedUserId()!=0){
+            User inviteUser = checkAndFindById(request.getInvitedUserId());
+            user.setInviteUserId2(inviteUser.getInviteUserId1());
+            user.setInviteUserId3(inviteUser.getInviteUserId2());
+        }
+
+        return user;
     }
 
 

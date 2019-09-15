@@ -17,4 +17,9 @@ public class SellAttributeValueServiceImpl implements SellAttributeValueService{
     public void save(SellAttributeValue sellAttributeValue) {
 
     }
+
+    @Override
+    public SellAttributeValue findById(Long sellAttributeValueId) {
+        return null;
+    }
 }

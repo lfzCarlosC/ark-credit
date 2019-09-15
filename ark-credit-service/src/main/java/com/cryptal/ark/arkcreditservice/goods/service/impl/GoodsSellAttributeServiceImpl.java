@@ -18,4 +18,9 @@ public class GoodsSellAttributeServiceImpl implements GoodsSellAttributeService 
     public void save(GoodsSellAttribute goodsSellAttribute1) {
 
     }
+
+    @Override
+    public GoodsSellAttribute findBySkuIdAndSellAttributeId(Long skuId, long attributeId) {
+        return null;
+    }
 }

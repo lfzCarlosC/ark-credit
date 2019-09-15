@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Entity
 public class User implements Serializable {
@@ -21,6 +22,9 @@ public class User implements Serializable {
      */
     private String password;
 
+    /**
+     * 电话
+     */
     private String tel;
 
     private String address;
@@ -51,6 +55,11 @@ public class User implements Serializable {
      * 积分
      */
     private BigDecimal balance;
+
+    /**
+     * 创建时间
+     */
+    private Date createTime;
 
     public Long getId() {
         return id;
@@ -130,5 +139,13 @@ public class User implements Serializable {
 
     public void setInviteUserId3(Long inviteUserId3) {
         this.inviteUserId3 = inviteUserId3;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

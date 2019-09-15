@@ -2,6 +2,7 @@ package com.cryptal.ark.arkcreditservice.order.service.impl;
 
 import com.cryptal.ark.arkcreditservice.order.dao.OrderDao;
 import com.cryptal.ark.arkcreditservice.order.domain.Order;
+import com.cryptal.ark.arkcreditservice.order.event.OrderCreated;
 import com.cryptal.ark.arkcreditservice.order.request.CreateOrderRequest;
 import com.cryptal.ark.arkcreditservice.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,10 @@ public class OrderServiceImpl implements OrderService {
 
         checkStockEnough(request);
         checkSkuCanBuy(request);
+
+        Order order = constructOrder(request);
+        orderDao.save(order);
+        publisher.publishEvent(new OrderCreated(this,order.getId(),order.getUserId(),order.getUserId(),order.getPrice(),order.getSkuNum()));
 
     }
 

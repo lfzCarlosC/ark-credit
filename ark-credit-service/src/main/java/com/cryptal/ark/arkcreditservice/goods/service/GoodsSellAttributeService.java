@@ -14,4 +14,6 @@ public interface GoodsSellAttributeService {
     SellAttributeValue findBySkuAndSellAttributeId(Long skuId, Long sellAttributeId);
 
     void save(GoodsSellAttribute goodsSellAttribute1);
+
+    GoodsSellAttribute findBySkuIdAndSellAttributeId(Long skuId, long attributeId);
 }

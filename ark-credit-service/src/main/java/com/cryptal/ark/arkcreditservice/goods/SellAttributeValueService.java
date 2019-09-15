@@ -11,4 +11,6 @@ public interface SellAttributeValueService {
 
     void save(SellAttributeValue sellAttributeValue);
 
+    SellAttributeValue findById(Long sellAttributeValueId);
+
 }

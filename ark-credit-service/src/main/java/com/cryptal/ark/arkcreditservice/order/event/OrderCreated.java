@@ -4,16 +4,39 @@ import org.springframework.context.ApplicationEvent;
 
 import java.math.BigDecimal;
 
+/**
+ * 订单被创建
+ */
 public class OrderCreated extends ApplicationEvent {
 
+    /**
+     * 订单ID
+     */
     private Long orderId;
 
+    /**
+     * 商品ID
+     */
     private Long goodsId;
 
+    /**
+     * SKU ID
+     */
+    private Long skuId;
+
+    /**
+     * 下单用户
+     */
     private Long userId;
 
+    /**
+     * 交易总额
+     */
     private BigDecimal paymentAmount;
 
+    /**
+     * 购买数量
+     */
     private Long count;
 
     public OrderCreated(Object source, Long orderId, Long goodsId, Long userId, BigDecimal paymentAmount, Long count) {
@@ -65,5 +88,13 @@ public class OrderCreated extends ApplicationEvent {
 
     public void setPaymentAmount(BigDecimal paymentAmount) {
         this.paymentAmount = paymentAmount;
+    }
+
+    public Long getSkuId() {
+        return skuId;
+    }
+
+    public void setSkuId(Long skuId) {
+        this.skuId = skuId;
     }
 }
