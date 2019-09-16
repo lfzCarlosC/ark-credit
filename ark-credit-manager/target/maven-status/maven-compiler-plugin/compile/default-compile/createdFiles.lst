@@ -1,0 +1,6 @@
+com\cryptal\ark\arkcreditmanager\conf\CustomAuthenticationProvider.class
+com\cryptal\ark\arkcreditmanager\conf\SecurityLoginUserPlugin.class
+com\cryptal\ark\arkcreditmanager\conf\WebSecurityConfig.class
+com\cryptal\ark\arkcreditmanager\ArkCreditApplication.class
+com\cryptal\ark\arkcreditmanager\manager\CommonFileUploadPlugin.class
+com\cryptal\ark\arkcreditmanager\conf\FrontPageConfig.class
