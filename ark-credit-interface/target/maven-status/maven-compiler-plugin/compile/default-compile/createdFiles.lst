@@ -1,0 +1,4 @@
+com\cryptal\ark\interfaze\goods\domain\ProductCategory.class
+com\cryptal\ark\interfaze\goods\dubbo\goods\ProductDubboService.class
+com\cryptal\ark\interfaze\goods\domain\Product.class
+com\cryptal\ark\interfaze\goods\dubbo\goods\ProductCategoryDubboService.class

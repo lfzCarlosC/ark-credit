@@ -11,9 +11,10 @@
 	<modules>
 		<module>ark-credit-service</module>
 		<module>ark-credit-common</module>
-		<module>ark-credit-dal</module>
 		<module>ark-credit-manager</module>
 		<module>ark-credit-page</module>
+		<module>ark-credit-interface</module>
+		<module>ark-credit-jpa</module>
 	</modules>
 
 	<groupId>com.cryptal.ark</groupId>
@@ -24,10 +25,34 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<ark.credit.version>0.0.1-SNAPSHOT</ark.credit.version>
+		<dubbo.version>2.7.3</dubbo.version>
 	</properties>
 
-	<dependencies>
-	</dependencies>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.cryptal.ark</groupId>
+				<artifactId>ark-credit-common</artifactId>
+				<version>${ark.credit.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.cryptal.ark</groupId>
+				<artifactId>ark-credit-interface</artifactId>
+				<version>${ark.credit.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.cryptal.ark</groupId>
+				<artifactId>ark-credit-jpa</artifactId>
+				<version>${ark.credit.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.cryptal.ark</groupId>
+				<artifactId>ark-credit-page</artifactId>
+				<version>${ark.credit.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<build>
 		<plugins>

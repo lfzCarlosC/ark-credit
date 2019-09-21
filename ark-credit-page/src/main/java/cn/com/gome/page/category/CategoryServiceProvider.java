@@ -11,7 +11,7 @@ public interface CategoryServiceProvider {
 
     CategoryEntity[] findAllCategoryEntity();
 
-    Serializable transform(String fieldValue);
+    Serializable transformToId(String fieldValue);
 
     boolean isRoot(String categoryId);
 }

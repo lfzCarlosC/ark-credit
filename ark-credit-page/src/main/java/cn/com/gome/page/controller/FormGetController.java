@@ -7,7 +7,7 @@ import cn.com.gome.page.field.FieldDefinition;
 import cn.com.gome.page.field.FieldType;
 import cn.com.gome.page.form.FormField;
 import cn.com.gome.page.utils.BeanUtils;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

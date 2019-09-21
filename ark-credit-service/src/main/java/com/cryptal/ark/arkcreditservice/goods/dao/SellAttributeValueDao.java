@@ -1,7 +1,7 @@
 package com.cryptal.ark.arkcreditservice.goods.dao;
 
-import com.cryptal.ark.arkcreditservice.goods.domain.SellAttributeValue;
-import org.springframework.data.jpa.repository.JpaRepository;
+import cn.com.gome.cloud.openplatform.repository.GenericDao;
+import com.cryptal.ark.arkcreditservice.goods.entity.SellAttributeValueEntity;
 
-public interface SellAttributeValueDao extends JpaRepository<SellAttributeValue,Long> {
+public interface SellAttributeValueDao extends GenericDao<SellAttributeValueEntity,Long> {
 }

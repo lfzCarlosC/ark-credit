@@ -27,13 +27,31 @@ public class FrontPageConfig {
     public PageManager pageManager(){
 
         AdminItems adminItems = new AdminItemsBuilder()
-                .addRootItem("菜单1","isvAccount",
-                        new LeafItem("子菜单一", "/admin/isvAccount/page")
+                .addRootItem("栏目管理","column",
+                        new LeafItem("栏目管理", "/admin/column/page"),
+                        new LeafItem("文章管理", "/admin/document/page")
                 )
-                .addRootItem("菜单2","monitor",
-                        new LeafItem("子菜单二", "/admin/app/page"),
-                        new LeafItem("子菜单三", "/admin/app_level/page"),
-                        new LeafItem("子菜单四", "/admin/api_rate_limit/page")
+                .addRootItem("产品管理","goods",
+                        new LeafItem("产品分类管理", "/admin/product_category/page"),
+                        new LeafItem("销售属性管理", "/admin/sell_category/page"),
+                        new LeafItem("商品管理", "/admin/goods/page"),
+                        new LeafItem("留言管理", "/admin/comment/page")
+                )
+                .addRootItem("订单管理","order",
+                        new LeafItem("订单管理", "/admin/order/page")
+                )
+                .addRootItem("会员管理","member",
+                        new LeafItem("等级管理", "/admin/rank/page"),
+                        new LeafItem("会员管理", "/admin/member/page")
+                )
+                .addRootItem("财务管理","finance",
+                        new LeafItem("充值管理", "/admin/recharge/page"),
+                        new LeafItem("提现管理", "/admin/withdraw/page"),
+                        new LeafItem("佣金管理", "/admin/commission/page"),
+                        new LeafItem("收入管理", "/admin/income/page")
+                )
+                .addRootItem("系统设置","config",
+                        new LeafItem("系统设置", "/admin/config/page")
                 )
                 .build();
 

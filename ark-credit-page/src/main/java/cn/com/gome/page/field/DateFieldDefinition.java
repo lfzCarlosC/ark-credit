@@ -6,7 +6,7 @@ import cn.com.gome.page.core.PageConfig;
 import cn.com.gome.page.core.PageService;
 import cn.com.gome.page.form.FormField;
 import com.google.common.base.Strings;
-import org.apache.commons.lang.time.DateFormatUtils;
+import org.apache.commons.lang3.time.DateFormatUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -1,12 +1,12 @@
 package com.cryptal.ark.arkcreditservice.goods.service.impl;
 
 import com.cryptal.ark.arkcreditservice.common.exp.CreditException;
-import com.cryptal.ark.arkcreditservice.goods.dao.GoodsDao;
+import com.cryptal.ark.arkcreditservice.goods.dao.ProductDao;
 import com.cryptal.ark.arkcreditservice.goods.dao.GoodsSellAttributeDao;
 import com.cryptal.ark.arkcreditservice.goods.dao.GoodsSkuDao;
 import com.cryptal.ark.arkcreditservice.goods.dao.SellAttributeValueDao;
-import com.cryptal.ark.arkcreditservice.goods.domain.Goods;
-import com.cryptal.ark.arkcreditservice.goods.domain.GoodsSku;
+import com.cryptal.ark.arkcreditservice.goods.entity.ProductEntity;
+import com.cryptal.ark.arkcreditservice.goods.entity.GoodsSkuEntity;
 import com.cryptal.ark.arkcreditservice.goods.service.GoodsService;
 import com.cryptal.ark.arkcreditservice.member.event.MemberRankOrdered;
 import com.cryptal.ark.arkcreditservice.order.event.OrderCreated;
@@ -35,21 +35,21 @@ public class GoodsServiceImpl implements GoodsService {
     private SellAttributeValueDao sellAttributeValueDao;
 
     @Autowired
-    private GoodsDao goodsDao;
+    private ProductDao productDao;
 
     @Override
     public void handleOrderCreated(OrderCreated event) {
 
-        GoodsSku goodsSku = checkAndFind(event.getSkuId());
+        GoodsSkuEntity goodsSkuEntity = checkAndFind(event.getSkuId());
 
-        goodsSku.setStock(goodsSku.getStock()-event.getCount());
-        goodsSkuDao.save(goodsSku);
+        goodsSkuEntity.setStock(goodsSkuEntity.getStock()-event.getCount());
+        goodsSkuDao.save(goodsSkuEntity);
 
         //如何获得购买的是等级商品，获取等级（黄金会员），获取时长（一个月），发送会员被购买事件
 
-        Goods goods = checkAndFind(goodsSku);
+        ProductEntity productEntity = checkAndFind(goodsSkuEntity);
 
-        if(checkIsRankGoods(goods)){
+        if(checkIsRankGoods(productEntity)){
             publisher.publishEvent(new MemberRankOrdered(this,event.getSkuId(),event.getUserId()));
         }
 
@@ -57,24 +57,24 @@ public class GoodsServiceImpl implements GoodsService {
 
     /**
      * 校验商品是等级商品
-     * @param goods
+     * @param productEntity
      * @return
      */
-    private boolean checkIsRankGoods(Goods goods) {
+    private boolean checkIsRankGoods(ProductEntity productEntity) {
         return false;
     }
 
 
-    private Goods checkAndFind(GoodsSku goodsSku) {
-        Optional<Goods> goodsOptional = goodsDao.findById(goodsSku.getGoodsId());
+    private ProductEntity checkAndFind(GoodsSkuEntity goodsSkuEntity) {
+        Optional<ProductEntity> goodsOptional = productDao.findById(goodsSkuEntity.getGoodsId());
         if(!goodsOptional.isPresent()){
-            throw new CreditException("商品信息不存在：" + goodsSku.getGoodsId());
+            throw new CreditException("商品信息不存在：" + goodsSkuEntity.getGoodsId());
         }
         return goodsOptional.get();
     }
 
-    private GoodsSku checkAndFind(Long skuId) {
-        Optional<GoodsSku> goodsSkuOptional = goodsSkuDao.findById(skuId);
+    private GoodsSkuEntity checkAndFind(Long skuId) {
+        Optional<GoodsSkuEntity> goodsSkuOptional = goodsSkuDao.findById(skuId);
         if(!goodsSkuOptional.isPresent()){
             throw new CreditException("商品SKU信息不存在" + skuId);
         }
@@ -83,12 +83,12 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public Goods findById(Long id) {
+    public ProductEntity findById(Long id) {
         return null;
     }
 
     @Override
-    public void save(Goods goods) {
+    public void save(ProductEntity productEntity) {
 
     }
 

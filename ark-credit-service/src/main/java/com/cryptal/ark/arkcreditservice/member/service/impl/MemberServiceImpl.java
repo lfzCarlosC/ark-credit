@@ -1,8 +1,8 @@
 package com.cryptal.ark.arkcreditservice.member.service.impl;
 
 import com.cryptal.ark.arkcreditservice.goods.SellAttributeValueService;
-import com.cryptal.ark.arkcreditservice.goods.domain.GoodsSellAttribute;
-import com.cryptal.ark.arkcreditservice.goods.domain.SellAttributeValue;
+import com.cryptal.ark.arkcreditservice.goods.entity.GoodsSellAttributeEntity;
+import com.cryptal.ark.arkcreditservice.goods.entity.SellAttributeValueEntity;
 import com.cryptal.ark.arkcreditservice.goods.service.GoodsSellAttributeService;
 import com.cryptal.ark.arkcreditservice.member.dao.MemberDao;
 import com.cryptal.ark.arkcreditservice.member.domain.MemberRank;
@@ -85,9 +85,9 @@ public class MemberServiceImpl implements MemberService {
     }
 
     private int findRankIntervel(Long skuId) {
-        GoodsSellAttribute rankGoodsSellAttribute = goodsSellAttributeService.findBySkuIdAndSellAttributeId(skuId,1L);
-        SellAttributeValue sellAttributeValue = sellAttributeValueService.findById(rankGoodsSellAttribute.getSellAttributeValueId());
-        switch (sellAttributeValue.getAttributeValue()){
+        GoodsSellAttributeEntity rankGoodsSellAttributeEntity = goodsSellAttributeService.findBySkuIdAndSellAttributeId(skuId,1L);
+        SellAttributeValueEntity sellAttributeValueEntity = sellAttributeValueService.findById(rankGoodsSellAttributeEntity.getSellAttributeValueId());
+        switch (sellAttributeValueEntity.getAttributeValue()){
             case "一年" :
                 return 365;
             default :
@@ -99,11 +99,11 @@ public class MemberServiceImpl implements MemberService {
 
     private Long findRankLevel(Long skuId) {
 
-        GoodsSellAttribute rankGoodsSellAttribute = goodsSellAttributeService.findBySkuIdAndSellAttributeId(skuId,1L);
+        GoodsSellAttributeEntity rankGoodsSellAttributeEntity = goodsSellAttributeService.findBySkuIdAndSellAttributeId(skuId,1L);
 
-        SellAttributeValue sellAttributeValue = sellAttributeValueService.findById(rankGoodsSellAttribute.getSellAttributeValueId());
+        SellAttributeValueEntity sellAttributeValueEntity = sellAttributeValueService.findById(rankGoodsSellAttributeEntity.getSellAttributeValueId());
 
-        switch (sellAttributeValue.getAttributeValue()){
+        switch (sellAttributeValueEntity.getAttributeValue()){
             case "黄金会员" :
                 return 1L;
         }

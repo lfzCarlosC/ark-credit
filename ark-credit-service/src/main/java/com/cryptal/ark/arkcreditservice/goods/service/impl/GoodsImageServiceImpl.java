@@ -1,6 +1,6 @@
 package com.cryptal.ark.arkcreditservice.goods.service.impl;
 
-import com.cryptal.ark.arkcreditservice.goods.domain.GoodsImage;
+import com.cryptal.ark.arkcreditservice.goods.entity.GoodsImageEntity;
 import com.cryptal.ark.arkcreditservice.goods.service.GoodsImageService;
 import org.springframework.stereotype.Component;
 
@@ -11,12 +11,12 @@ public class GoodsImageServiceImpl implements GoodsImageService {
 
 
     @Override
-    public List<GoodsImage> findBySkuId(Long skuId) {
+    public List<GoodsImageEntity> findBySkuId(Long skuId) {
         return null;
     }
 
     @Override
-    public void save(GoodsImage goodsImage) {
+    public void save(GoodsImageEntity goodsImageEntity) {
 
     }
 }

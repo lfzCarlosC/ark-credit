@@ -1,6 +1,6 @@
 package com.cryptal.ark.arkcreditservice.goods.service.impl;
 
-import com.cryptal.ark.arkcreditservice.goods.domain.GoodsType;
+import com.cryptal.ark.arkcreditservice.goods.entity.GoodsType;
 import com.cryptal.ark.arkcreditservice.goods.service.GoodsExecutor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

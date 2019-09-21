@@ -1,7 +1,7 @@
 package com.cryptal.ark.arkcreditservice.goods.service;
 
-import com.cryptal.ark.arkcreditservice.goods.domain.GoodsSellAttribute;
-import com.cryptal.ark.arkcreditservice.goods.domain.SellAttributeValue;
+import com.cryptal.ark.arkcreditservice.goods.entity.GoodsSellAttributeEntity;
+import com.cryptal.ark.arkcreditservice.goods.entity.SellAttributeValueEntity;
 
 public interface GoodsSellAttributeService {
 
@@ -11,9 +11,9 @@ public interface GoodsSellAttributeService {
      * @param sellAttributeId   销售属性ID
      * @return
      */
-    SellAttributeValue findBySkuAndSellAttributeId(Long skuId, Long sellAttributeId);
+    SellAttributeValueEntity findBySkuAndSellAttributeId(Long skuId, Long sellAttributeId);
 
-    void save(GoodsSellAttribute goodsSellAttribute1);
+    void save(GoodsSellAttributeEntity goodsSellAttributeEntity1);
 
-    GoodsSellAttribute findBySkuIdAndSellAttributeId(Long skuId, long attributeId);
+    GoodsSellAttributeEntity findBySkuIdAndSellAttributeId(Long skuId, long attributeId);
 }

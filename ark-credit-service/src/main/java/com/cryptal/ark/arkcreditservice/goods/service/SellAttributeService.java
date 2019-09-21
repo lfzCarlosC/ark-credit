@@ -1,12 +1,12 @@
 package com.cryptal.ark.arkcreditservice.goods.service;
 
-import com.cryptal.ark.arkcreditservice.goods.domain.SellAttribute;
+import cn.com.gome.cloud.openplatform.service.GenericService;
+import com.cryptal.ark.arkcreditservice.goods.entity.SellAttributeEntity;
 
 import java.util.List;
 
-public interface SellAttributeService {
+public interface SellAttributeService extends GenericService<SellAttributeEntity,Long> {
 
-    List<SellAttribute> findByCategoryId(Long categoryId);
+    List<SellAttributeEntity> findByCategoryId(Long categoryId);
 
-    void save(SellAttribute sellAttribute);
 }

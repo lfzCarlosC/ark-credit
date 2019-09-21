@@ -1,9 +1,9 @@
 package com.cryptal.ark.arkcreditservice.goods.service;
 
-import com.cryptal.ark.arkcreditservice.goods.domain.RankGoods;
+import com.cryptal.ark.arkcreditservice.goods.entity.RankGoodsEntity;
 
 public interface RankGoodsService {
 
-    RankGoods findByGoodsId(Long goodsId);
+    RankGoodsEntity findByGoodsId(Long goodsId);
 
 }

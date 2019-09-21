@@ -1,6 +1,6 @@
 package com.cryptal.ark.arkcreditservice.goods;
 
-import com.cryptal.ark.arkcreditservice.goods.domain.*;
+import com.cryptal.ark.arkcreditservice.goods.entity.*;
 import com.cryptal.ark.arkcreditservice.goods.service.*;
 import com.cryptal.ark.arkcreditservice.goods.service.impl.*;
 
@@ -9,7 +9,7 @@ import java.util.List;
 
 public class GoodsServiceTest {
 
-    private GoodsCategoryService goodsCategoryService = new GoodsCategoryServiceImpl();
+    private ProductCategoryService productCategoryService = new ProductCategoryServiceImpl();
 
     private GoodsService goodsService = new GoodsServiceImpl();
 
@@ -31,25 +31,25 @@ public class GoodsServiceTest {
         Long skuId= 1L;
 
         //SKU
-        GoodsSku goodsSku = goodsSkuService.findById(skuId);
+        GoodsSkuEntity goodsSkuEntity = goodsSkuService.findById(skuId);
 
         //商品
-        Goods goods = goodsService.findById(goodsSku.getGoodsId());
+        ProductEntity productEntity = goodsService.findById(goodsSkuEntity.getGoodsId());
 
         //图片
-        List<GoodsImage> goodsImages = goodsImageService.findBySkuId(skuId);
+        List<GoodsImageEntity> goodsImageEntities = goodsImageService.findBySkuId(skuId);
 
 
         //所有的销售属性 + 所有的销售属性值
-        List<SellAttribute> sellAttributes =  sellAttributeService.findByCategoryId(goods.getCategoryId());
+        List<SellAttributeEntity> sellAttributeEntities =  sellAttributeService.findByCategoryId(productEntity.getCategoryId());
 
-        for (SellAttribute sellAttribute : sellAttributes) {
+        for (SellAttributeEntity sellAttributeEntity : sellAttributeEntities) {
 
             //选中的销售属性值
-            SellAttributeValue sellAttributeValue = goodsSellAttributeService.findBySkuAndSellAttributeId(skuId,sellAttribute.getId());
+            SellAttributeValueEntity sellAttributeValueEntity = goodsSellAttributeService.findBySkuAndSellAttributeId(skuId, sellAttributeEntity.getId());
 
             //销售属性值列表
-            List<SellAttributeValue> sellAttributeValues = sellAttributeValueService.findByAttributeId(sellAttribute.getId());
+            List<SellAttributeValueEntity> sellAttributeValueEntities = sellAttributeValueService.findByAttributeId(sellAttributeEntity.getId());
 
 
         }
@@ -64,82 +64,82 @@ public class GoodsServiceTest {
     public void test_add_rank_goods_type(){
 
         //初始化销售属性值分类
-        GoodsCategory goodsCategory = new GoodsCategory();
-        goodsCategory.setId(1L);
-        goodsCategory.setName("会员等级商品");
-        goodsCategoryService.save(goodsCategory);
+        ProductCategoryEntity productCategoryEntity = new ProductCategoryEntity();
+        productCategoryEntity.setId(1L);
+        productCategoryEntity.setName("会员等级商品");
+        productCategoryService.insert(productCategoryEntity);
 
         //增加销售属性值
-        SellAttribute sellAttribute1 = new SellAttribute();
-        sellAttribute1.setId(1L);
-        sellAttribute1.setSellCategoryId(1L);
-        sellAttribute1.setName("等级");
-        sellAttributeService.save(sellAttribute1);
+        SellAttributeEntity sellAttributeEntity1 = new SellAttributeEntity();
+        sellAttributeEntity1.setId(1L);
+        sellAttributeEntity1.setCategoryId(1L);
+        sellAttributeEntity1.setName("等级");
+        sellAttributeService.insert(sellAttributeEntity1);
 
-        SellAttribute sellAttribute2 = new SellAttribute();
-        sellAttribute2.setId(1L);
-        sellAttribute2.setSellCategoryId(1L);
-        sellAttribute2.setName("有效期");
-        sellAttributeService.save(sellAttribute2);
+        SellAttributeEntity sellAttributeEntity2 = new SellAttributeEntity();
+        sellAttributeEntity2.setId(1L);
+        sellAttributeEntity2.setCategoryId(1L);
+        sellAttributeEntity2.setName("有效期");
+        sellAttributeService.insert(sellAttributeEntity2);
 
-        SellAttributeValue sellAttributeValue1 = new SellAttributeValue();
-        sellAttributeValue1.setId(1L);
-        sellAttributeValue1.setAttributeId(1L);
-        sellAttributeValue1.setAttributeValue("黄金会员");
-        sellAttributeValueService.save(sellAttributeValue1);
+        SellAttributeValueEntity sellAttributeValueEntity1 = new SellAttributeValueEntity();
+        sellAttributeValueEntity1.setId(1L);
+        sellAttributeValueEntity1.setAttributeId(1L);
+        sellAttributeValueEntity1.setAttributeValue("黄金会员");
+        sellAttributeValueService.save(sellAttributeValueEntity1);
 
-        SellAttributeValue sellAttributeValue2 = new SellAttributeValue();
-        sellAttributeValue2.setId(2L);
-        sellAttributeValue2.setAttributeId(1L);
-        sellAttributeValue2.setAttributeValue("钻石会员");
-        sellAttributeValueService.save(sellAttributeValue2);
+        SellAttributeValueEntity sellAttributeValueEntity2 = new SellAttributeValueEntity();
+        sellAttributeValueEntity2.setId(2L);
+        sellAttributeValueEntity2.setAttributeId(1L);
+        sellAttributeValueEntity2.setAttributeValue("钻石会员");
+        sellAttributeValueService.save(sellAttributeValueEntity2);
 
-        SellAttributeValue sellAttributeValue3 = new SellAttributeValue();
-        sellAttributeValue2.setId(2L);
-        sellAttributeValue2.setAttributeId(2L);
-        sellAttributeValue2.setAttributeValue("一年");
-        sellAttributeValueService.save(sellAttributeValue2);
+        SellAttributeValueEntity sellAttributeValueEntity3 = new SellAttributeValueEntity();
+        sellAttributeValueEntity2.setId(2L);
+        sellAttributeValueEntity2.setAttributeId(2L);
+        sellAttributeValueEntity2.setAttributeValue("一年");
+        sellAttributeValueService.save(sellAttributeValueEntity2);
 
-        SellAttributeValue sellAttributeValue4 = new SellAttributeValue();
-        sellAttributeValue4.setId(2L);
-        sellAttributeValue4.setAttributeId(2L);
-        sellAttributeValue4.setAttributeValue("一个月");
-        sellAttributeValueService.save(sellAttributeValue2);
+        SellAttributeValueEntity sellAttributeValueEntity4 = new SellAttributeValueEntity();
+        sellAttributeValueEntity4.setId(2L);
+        sellAttributeValueEntity4.setAttributeId(2L);
+        sellAttributeValueEntity4.setAttributeValue("一个月");
+        sellAttributeValueService.save(sellAttributeValueEntity2);
 
         //商品
-        Goods goods = new Goods();
-        goods.setId(1L);
-        goods.setGoodsName("会员等级购买");
-        goods.setCategoryId(1L);
-        goodsService.save(goods);
+        ProductEntity productEntity = new ProductEntity();
+        productEntity.setId(1L);
+        productEntity.setName("会员等级购买");
+        productEntity.setCategoryId(1L);
+        goodsService.save(productEntity);
 
 
         //sku
-        GoodsSku goodsSku = new GoodsSku();
-        goodsSku.setGoodsId(1L);
-        goodsSku.setOnSale(false);
-        goodsSku.setStock(99L);
-        goodsSku.setPrice(new BigDecimal(10.00));
+        GoodsSkuEntity goodsSkuEntity = new GoodsSkuEntity();
+        goodsSkuEntity.setGoodsId(1L);
+        goodsSkuEntity.setOnSale(false);
+        goodsSkuEntity.setStock(99L);
+        goodsSkuEntity.setPrice(new BigDecimal(10.00));
 
         //图片
-        GoodsImage goodsImage = new GoodsImage();
-        goodsImage.setSkuId(goodsSku.getId());
-        goodsImage.setImagePath("");
-        goodsImageService.save(goodsImage);
+        GoodsImageEntity goodsImageEntity = new GoodsImageEntity();
+        goodsImageEntity.setSkuId(goodsSkuEntity.getId());
+        goodsImageEntity.setImagePath("");
+        goodsImageService.save(goodsImageEntity);
 
         //商品销售属性
-        GoodsSellAttribute goodsSellAttribute1 = new GoodsSellAttribute();
-        goodsSellAttribute1.setSkuId(goodsSku.getId());
-        goodsSellAttribute1.setSellAttributeId(1L);
-        goodsSellAttribute1.setSellAttributeValueId(1L);
-        goodsSellAttributeService.save(goodsSellAttribute1);
+        GoodsSellAttributeEntity goodsSellAttributeEntity1 = new GoodsSellAttributeEntity();
+        goodsSellAttributeEntity1.setSkuId(goodsSkuEntity.getId());
+        goodsSellAttributeEntity1.setSellAttributeId(1L);
+        goodsSellAttributeEntity1.setSellAttributeValueId(1L);
+        goodsSellAttributeService.save(goodsSellAttributeEntity1);
 
 
-        GoodsSellAttribute goodsSellAttribute2 = new GoodsSellAttribute();
-        goodsSellAttribute2.setSkuId(goodsSku.getId());
-        goodsSellAttribute2.setSellAttributeId(2L);
-        goodsSellAttribute2.setSellAttributeValueId(3L);
-        goodsSellAttributeService.save(goodsSellAttribute2);
+        GoodsSellAttributeEntity goodsSellAttributeEntity2 = new GoodsSellAttributeEntity();
+        goodsSellAttributeEntity2.setSkuId(goodsSkuEntity.getId());
+        goodsSellAttributeEntity2.setSellAttributeId(2L);
+        goodsSellAttributeEntity2.setSellAttributeValueId(3L);
+        goodsSellAttributeService.save(goodsSellAttributeEntity2);
     }
 
 }

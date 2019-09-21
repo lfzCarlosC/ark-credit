@@ -1,0 +1,7 @@
+server:
+  port: 8081
+logging:
+  level:
+    root: INFO
+dubbo:
+  zookeeperUrl: 106.12.203.161:2181

@@ -35,7 +35,7 @@ public class CategoryFieldDefinition extends FieldDefinition{
     public void constructSearchFilter(HttpServletRequest request, SearchFilter searchFilter, String filterPattern) {
         String fieldValue = request.getParameter(fieldName);
         if (!Strings.isNullOrEmpty(fieldValue)) {
-            searchFilter.add(Restrictions.eq(fieldName, categoryServiceProvider.transform(fieldValue)));
+            searchFilter.add(Restrictions.eq(fieldName, categoryServiceProvider.transformToId(fieldValue)));
         }
     }
 
@@ -97,7 +97,7 @@ public class CategoryFieldDefinition extends FieldDefinition{
 
     @Override
     public Object transferType(Serializable entity, FormField formField, String parameterValue) {
-        return categoryServiceProvider.transform(parameterValue);
+        return categoryServiceProvider.transformToId(parameterValue);
     }
 
     /**

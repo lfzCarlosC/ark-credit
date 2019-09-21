@@ -1,8 +1,8 @@
 package com.cryptal.ark.arkcreditservice.goods.service;
 
-import com.cryptal.ark.arkcreditservice.goods.domain.GoodsSku;
+import com.cryptal.ark.arkcreditservice.goods.entity.GoodsSkuEntity;
 
 public interface GoodsSkuService {
 
-    GoodsSku findById(Long skuId);
+    GoodsSkuEntity findById(Long skuId);
 }

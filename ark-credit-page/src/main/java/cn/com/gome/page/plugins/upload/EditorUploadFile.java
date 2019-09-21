@@ -10,15 +10,15 @@ import java.util.List;
  */
 public class EditorUploadFile  implements Serializable {
 
-    private String errno;
+    private int errno;
 
     private List<String> data;
 
-    public String getErrno() {
+    public int getErrno() {
         return errno;
     }
 
-    public void setErrno(String errno) {
+    public void setErrno(int errno) {
         this.errno = errno;
     }
 
@@ -32,14 +32,14 @@ public class EditorUploadFile  implements Serializable {
 
     public static EditorUploadFile createSuccessResponse(String imagePath) {
         EditorUploadFile editorUploadFile = new EditorUploadFile();
-        editorUploadFile.setErrno("");
+        editorUploadFile.setErrno(0);
         editorUploadFile.setData(Lists.newArrayList(imagePath));
         return editorUploadFile;
     }
 
     public static EditorUploadFile createFailResponse(String errorMsg) {
         EditorUploadFile editorUploadFile = new EditorUploadFile();
-        editorUploadFile.setErrno(errorMsg);
+        editorUploadFile.setErrno(1);
         editorUploadFile.setData(Lists.newArrayList(""));
         return editorUploadFile;
     }

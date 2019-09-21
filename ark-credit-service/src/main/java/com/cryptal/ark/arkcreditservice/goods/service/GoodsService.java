@@ -1,6 +1,6 @@
 package com.cryptal.ark.arkcreditservice.goods.service;
 
-import com.cryptal.ark.arkcreditservice.goods.domain.Goods;
+import com.cryptal.ark.arkcreditservice.goods.entity.ProductEntity;
 import com.cryptal.ark.arkcreditservice.order.event.OrderCreated;
 
 public interface GoodsService {
@@ -16,7 +16,7 @@ public interface GoodsService {
      * @param id
      * @return
      */
-    Goods findById(Long id);
+    ProductEntity findById(Long id);
 
-    void save(Goods goods);
+    void save(ProductEntity productEntity);
 }

@@ -1,6 +1,6 @@
 package com.cryptal.ark.arkcreditservice.goods.service.impl;
 
-import com.cryptal.ark.arkcreditservice.goods.domain.RankGoods;
+import com.cryptal.ark.arkcreditservice.goods.entity.RankGoodsEntity;
 import com.cryptal.ark.arkcreditservice.goods.service.GoodsExecutor;
 import com.cryptal.ark.arkcreditservice.goods.service.RankGoodsService;
 import com.cryptal.ark.arkcreditservice.member.service.MemberService;
@@ -24,8 +24,8 @@ public class RankGoodsExecutor implements GoodsExecutor {
     @Override
     public void execute(Long goodsId, Long userId) {
 
-        RankGoods rankGoods = rankGoodsService.findByGoodsId(goodsId);
-        memberService.assignUserWithRank(userId,rankGoods.getRankId(),rankGoods.getDays());
+        RankGoodsEntity rankGoodsEntity = rankGoodsService.findByGoodsId(goodsId);
+        memberService.assignUserWithRank(userId, rankGoodsEntity.getRankId(), rankGoodsEntity.getDays());
 
     }
 

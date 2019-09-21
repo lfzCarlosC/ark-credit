@@ -2,7 +2,7 @@ package cn.com.gome.page.category;
 
 
 import cn.com.gome.page.domain.CategoryEntity;
-import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;

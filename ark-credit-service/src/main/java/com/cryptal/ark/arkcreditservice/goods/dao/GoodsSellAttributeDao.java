@@ -1,8 +1,8 @@
 package com.cryptal.ark.arkcreditservice.goods.dao;
 
-import com.cryptal.ark.arkcreditservice.goods.domain.GoodsSellAttribute;
+import com.cryptal.ark.arkcreditservice.goods.entity.GoodsSellAttributeEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface GoodsSellAttributeDao extends JpaRepository<GoodsSellAttribute,Long> {
-    GoodsSellAttribute findBySkuIdAndSellAttributeId(Long skuId, long sellAttributeId);
+public interface GoodsSellAttributeDao extends JpaRepository<GoodsSellAttributeEntity,Long> {
+    GoodsSellAttributeEntity findBySkuIdAndSellAttributeId(Long skuId, long sellAttributeId);
 }

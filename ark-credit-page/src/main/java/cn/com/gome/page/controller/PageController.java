@@ -14,7 +14,7 @@ import cn.com.gome.page.utils.BeanUtils;
 import cn.com.gome.page.utils.PageConstant;
 import cn.com.gome.page.utils.PageWapper;
 import com.google.common.base.Strings;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

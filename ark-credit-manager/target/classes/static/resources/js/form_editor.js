@@ -20,6 +20,8 @@ function editor(idName){
 
         editor.customConfig.uploadImgServer = '/uploadImg'
 
+        editor.customConfig.uploadFileName = 'filedata'
+
         editor.customConfig.uploadImgMaxSize = 3 * 1024 * 1024
 
         // 自定义菜单配置

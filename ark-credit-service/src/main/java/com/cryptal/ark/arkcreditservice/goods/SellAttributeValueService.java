@@ -1,16 +1,16 @@
 package com.cryptal.ark.arkcreditservice.goods;
 
-import com.cryptal.ark.arkcreditservice.goods.domain.SellAttributeValue;
+import com.cryptal.ark.arkcreditservice.goods.entity.SellAttributeValueEntity;
 
 import java.util.List;
 
 public interface SellAttributeValueService {
 
-    List<SellAttributeValue> findByAttributeId(Long attributeId);
+    List<SellAttributeValueEntity> findByAttributeId(Long attributeId);
 
 
-    void save(SellAttributeValue sellAttributeValue);
+    void save(SellAttributeValueEntity sellAttributeValueEntity);
 
-    SellAttributeValue findById(Long sellAttributeValueId);
+    SellAttributeValueEntity findById(Long sellAttributeValueId);
 
 }
