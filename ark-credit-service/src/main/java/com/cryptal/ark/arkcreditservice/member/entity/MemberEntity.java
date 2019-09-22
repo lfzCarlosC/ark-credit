@@ -1,4 +1,4 @@
-package com.cryptal.ark.arkcreditservice.member.domain;
+package com.cryptal.ark.arkcreditservice.member.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,7 +9,7 @@ import java.util.Date;
  * 会员等级
  */
 @Entity
-public class MemberRank implements Serializable {
+public class MemberEntity implements Serializable {
 
     @Id
     private Long id;

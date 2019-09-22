@@ -39,7 +39,7 @@ public class FrontPageConfig {
                         new LeafItem("订单管理", "/admin/order/page")
                 )
                 .addRootItem("会员管理","member",
-                        new LeafItem("等级管理", "/admin/rank/page"),
+                        new LeafItem("等级管理", "/admin/member_rank/page"),
                         new LeafItem("会员管理", "/admin/member/page")
                 )
                 .addRootItem("财务管理","finance",

@@ -5,7 +5,7 @@ import com.cryptal.ark.arkcreditservice.goods.entity.SellAttributeValueEntity;
 import com.cryptal.ark.arkcreditservice.goods.service.GoodsSellAttributeService;
 import com.cryptal.ark.arkcreditservice.goods.service.SellAttributeValueService;
 import com.cryptal.ark.arkcreditservice.member.dao.MemberDao;
-import com.cryptal.ark.arkcreditservice.member.domain.MemberRank;
+import com.cryptal.ark.arkcreditservice.member.entity.MemberEntity;
 import com.cryptal.ark.arkcreditservice.member.event.MemberRankAssigned;
 import com.cryptal.ark.arkcreditservice.member.event.MemberRankOrdered;
 import com.cryptal.ark.arkcreditservice.member.service.MemberService;
@@ -41,16 +41,16 @@ public class MemberServiceImpl implements MemberService {
 
 
     @Override
-    public List<MemberRank> findByUserId(Long userId) {
+    public List<MemberEntity> findByUserId(Long userId) {
         return null;
     }
 
 
     @Override
     public void removeExpireMembers() {
-        List<MemberRank> memberRankList = findExpiredMembers();
-        for (MemberRank memberRank : memberRankList) {
-            publisher.publishEvent(new UserRankExpired(this, memberRank.getUserId()));
+        List<MemberEntity> memberEntityList = findExpiredMembers();
+        for (MemberEntity memberEntity : memberEntityList) {
+            publisher.publishEvent(new UserRankExpired(this, memberEntity.getUserId()));
         }
     }
 
@@ -115,7 +115,7 @@ public class MemberServiceImpl implements MemberService {
      * 查询会员到期的会员
      * @return
      */
-    private List<MemberRank> findExpiredMembers() {
+    private List<MemberEntity> findExpiredMembers() {
         return Lists.newArrayList();
     }
 }

@@ -1,6 +1,6 @@
 package com.cryptal.ark.arkcreditservice.member.service;
 
-import com.cryptal.ark.arkcreditservice.member.domain.MemberRank;
+import com.cryptal.ark.arkcreditservice.member.entity.MemberEntity;
 import com.cryptal.ark.arkcreditservice.member.event.MemberRankOrdered;
 import com.cryptal.ark.arkcreditservice.rank.domain.RankConstant;
 
@@ -15,7 +15,7 @@ public interface MemberService {
      * @param userId
      * @return
      */
-    List<MemberRank> findByUserId(Long userId);
+    List<MemberEntity> findByUserId(Long userId);
 
     /**
      * 移除过期用户

@@ -4,7 +4,7 @@ import com.cryptal.ark.arkcreditservice.common.EncryptUtil;
 import com.cryptal.ark.arkcreditservice.common.exp.CreditException;
 import com.cryptal.ark.arkcreditservice.order.event.OrderCreated;
 import com.cryptal.ark.arkcreditservice.rank.domain.RankConstant;
-import com.cryptal.ark.arkcreditservice.rank.service.MemberRankService;
+import com.cryptal.ark.arkcreditservice.member.service.MemberRankService;
 import com.cryptal.ark.arkcreditservice.user.dao.UserDao;
 import com.cryptal.ark.arkcreditservice.user.domain.User;
 import com.cryptal.ark.arkcreditservice.user.event.UserAmountAdded;

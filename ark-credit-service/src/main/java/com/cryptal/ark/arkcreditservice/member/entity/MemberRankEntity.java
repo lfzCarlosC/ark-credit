@@ -1,14 +1,16 @@
-package com.cryptal.ark.arkcreditservice.rank.domain;
+package com.cryptal.ark.arkcreditservice.member.entity;
+
+import cn.com.gome.cloud.openplatform.open.OpenConvertible;
+import com.cryptal.ark.interfaze.member.domain.MemberRank;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.io.Serializable;
 
 /**
  * 会员等级
  */
 @Entity
-public class MemberRank implements Serializable {
+public class MemberRankEntity implements OpenConvertible<MemberRank> {
 
     @Id
     private Long id;
@@ -33,11 +35,7 @@ public class MemberRank implements Serializable {
      */
     private int rebatePercentLevel3;
 
-    public MemberRank() {
-    }
-
-    public MemberRank(Long rankId, String name) {
-
+    public MemberRankEntity() {
     }
 
     public Long getId() {
@@ -78,5 +76,26 @@ public class MemberRank implements Serializable {
 
     public void setRebatePercentLevel3(int rebatePercentLevel3) {
         this.rebatePercentLevel3 = rebatePercentLevel3;
+    }
+
+    @Override
+    public MemberRank converter() {
+        MemberRank memberRank = new MemberRank();
+        memberRank.setId(id);
+        memberRank.setName(name);
+        memberRank.setRebatePercentLevel1(rebatePercentLevel1);
+        memberRank.setRebatePercentLevel2(rebatePercentLevel2);
+        memberRank.setRebatePercentLevel3(rebatePercentLevel3);
+        return memberRank;
+    }
+
+    public static MemberRankEntity constructFrom(MemberRank memberRank) {
+        MemberRankEntity memberRankEntity = new MemberRankEntity();
+        memberRankEntity.setId(memberRank.getId());
+        memberRankEntity.setName(memberRank.getName());
+        memberRankEntity.setRebatePercentLevel1(memberRank.getRebatePercentLevel1());
+        memberRankEntity.setRebatePercentLevel2(memberRank.getRebatePercentLevel2());
+        memberRankEntity.setRebatePercentLevel3(memberRank.getRebatePercentLevel3());
+        return memberRankEntity;
     }
 }

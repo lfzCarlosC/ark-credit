@@ -1,9 +1,9 @@
 package com.cryptal.ark.arkcreditservice.rank;
 
-import com.cryptal.ark.arkcreditservice.rank.domain.MemberRank;
-import com.cryptal.ark.arkcreditservice.rank.service.MemberRankService;
+import com.cryptal.ark.arkcreditservice.member.entity.MemberRankEntity;
+import com.cryptal.ark.arkcreditservice.member.service.MemberRankService;
 import com.cryptal.ark.arkcreditservice.rank.service.RankMessageTypeService;
-import com.cryptal.ark.arkcreditservice.rank.service.impl.MemberRankServiceImpl;
+import com.cryptal.ark.arkcreditservice.member.service.impl.MemberRankServiceImpl;
 import com.cryptal.ark.arkcreditservice.rank.service.impl.RankMessageTypeServiceImpl;
 import org.junit.Test;
 
@@ -18,12 +18,12 @@ public class MemberMemberServiceTest {
      */
     @Test
     public void test_add_new_rank(){
-        MemberRank memberRank = new MemberRank();
-        memberRank.setName("黄金会员");
-        memberRank.setRebatePercentLevel1(20);
-        memberRank.setRebatePercentLevel2(10);
-        memberRank.setRebatePercentLevel3(5);
-        memberRankService.insert(memberRank);
+        MemberRankEntity memberRankEntity = new MemberRankEntity();
+        memberRankEntity.setName("黄金会员");
+        memberRankEntity.setRebatePercentLevel1(20);
+        memberRankEntity.setRebatePercentLevel2(10);
+        memberRankEntity.setRebatePercentLevel3(5);
+        memberRankService.insert(memberRankEntity);
     }
 
     /**
