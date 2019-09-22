@@ -1,9 +1,9 @@
 package com.cryptal.ark.arkcreditservice.member.service.impl;
 
-import com.cryptal.ark.arkcreditservice.goods.SellAttributeValueService;
 import com.cryptal.ark.arkcreditservice.goods.entity.GoodsSellAttributeEntity;
 import com.cryptal.ark.arkcreditservice.goods.entity.SellAttributeValueEntity;
 import com.cryptal.ark.arkcreditservice.goods.service.GoodsSellAttributeService;
+import com.cryptal.ark.arkcreditservice.goods.service.SellAttributeValueService;
 import com.cryptal.ark.arkcreditservice.member.dao.MemberDao;
 import com.cryptal.ark.arkcreditservice.member.domain.MemberRank;
 import com.cryptal.ark.arkcreditservice.member.event.MemberRankAssigned;
@@ -86,7 +86,7 @@ public class MemberServiceImpl implements MemberService {
 
     private int findRankIntervel(Long skuId) {
         GoodsSellAttributeEntity rankGoodsSellAttributeEntity = goodsSellAttributeService.findBySkuIdAndSellAttributeId(skuId,1L);
-        SellAttributeValueEntity sellAttributeValueEntity = sellAttributeValueService.findById(rankGoodsSellAttributeEntity.getSellAttributeValueId());
+        SellAttributeValueEntity sellAttributeValueEntity = sellAttributeValueService.get(rankGoodsSellAttributeEntity.getSellAttributeValueId());
         switch (sellAttributeValueEntity.getAttributeValue()){
             case "一年" :
                 return 365;
@@ -101,7 +101,7 @@ public class MemberServiceImpl implements MemberService {
 
         GoodsSellAttributeEntity rankGoodsSellAttributeEntity = goodsSellAttributeService.findBySkuIdAndSellAttributeId(skuId,1L);
 
-        SellAttributeValueEntity sellAttributeValueEntity = sellAttributeValueService.findById(rankGoodsSellAttributeEntity.getSellAttributeValueId());
+        SellAttributeValueEntity sellAttributeValueEntity = sellAttributeValueService.get(rankGoodsSellAttributeEntity.getSellAttributeValueId());
 
         switch (sellAttributeValueEntity.getAttributeValue()){
             case "黄金会员" :

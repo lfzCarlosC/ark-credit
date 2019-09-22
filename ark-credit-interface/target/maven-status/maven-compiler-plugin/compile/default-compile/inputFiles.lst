@@ -1,4 +1,12 @@
 F:\workplace\ark-credit\ark-credit-interface\src\main\java\com\cryptal\ark\interfaze\goods\domain\ProductCategory.java
+F:\workplace\ark-credit\ark-credit-interface\src\main\java\com\cryptal\ark\interfaze\goods\domain\GoodsImage.java
+F:\workplace\ark-credit\ark-credit-interface\src\main\java\com\cryptal\ark\interfaze\goods\domain\GoodsSku.java
 F:\workplace\ark-credit\ark-credit-interface\src\main\java\com\cryptal\ark\interfaze\goods\dubbo\goods\ProductDubboService.java
+F:\workplace\ark-credit\ark-credit-interface\src\main\java\com\cryptal\ark\interfaze\goods\dubbo\goods\SellAttributeDubboService.java
 F:\workplace\ark-credit\ark-credit-interface\src\main\java\com\cryptal\ark\interfaze\goods\dubbo\goods\ProductCategoryDubboService.java
+F:\workplace\ark-credit\ark-credit-interface\src\main\java\com\cryptal\ark\interfaze\goods\domain\SellAttribute.java
+F:\workplace\ark-credit\ark-credit-interface\src\main\java\com\cryptal\ark\interfaze\goods\dubbo\goods\GoodsSkuDubboService.java
+F:\workplace\ark-credit\ark-credit-interface\src\main\java\com\cryptal\ark\interfaze\goods\dubbo\goods\SellAttributeValueDubboService.java
 F:\workplace\ark-credit\ark-credit-interface\src\main\java\com\cryptal\ark\interfaze\goods\domain\Product.java
+F:\workplace\ark-credit\ark-credit-interface\src\main\java\com\cryptal\ark\interfaze\goods\domain\SellAttributeValue.java
+F:\workplace\ark-credit\ark-credit-interface\src\main\java\com\cryptal\ark\interfaze\goods\dubbo\goods\GoodsImageDubboService.java

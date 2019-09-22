@@ -4,14 +4,13 @@ import com.cryptal.ark.arkcreditservice.goods.entity.*;
 import com.cryptal.ark.arkcreditservice.goods.service.*;
 import com.cryptal.ark.arkcreditservice.goods.service.impl.*;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 public class GoodsServiceTest {
 
     private ProductCategoryService productCategoryService = new ProductCategoryServiceImpl();
 
-    private GoodsService goodsService = new GoodsServiceImpl();
+    private ProductService productService = new ProductServiceImpl();
 
     private GoodsSellAttributeService goodsSellAttributeService = new GoodsSellAttributeServiceImpl();
 
@@ -31,10 +30,10 @@ public class GoodsServiceTest {
         Long skuId= 1L;
 
         //SKU
-        GoodsSkuEntity goodsSkuEntity = goodsSkuService.findById(skuId);
+        GoodsSkuEntity goodsSkuEntity = goodsSkuService.get(skuId);
 
         //商品
-        ProductEntity productEntity = goodsService.findById(goodsSkuEntity.getGoodsId());
+        ProductEntity productEntity = productService.get(goodsSkuEntity.getProductId());
 
         //图片
         List<GoodsImageEntity> goodsImageEntities = goodsImageService.findBySkuId(skuId);
@@ -86,46 +85,46 @@ public class GoodsServiceTest {
         sellAttributeValueEntity1.setId(1L);
         sellAttributeValueEntity1.setAttributeId(1L);
         sellAttributeValueEntity1.setAttributeValue("黄金会员");
-        sellAttributeValueService.save(sellAttributeValueEntity1);
+        sellAttributeValueService.insert(sellAttributeValueEntity1);
 
         SellAttributeValueEntity sellAttributeValueEntity2 = new SellAttributeValueEntity();
         sellAttributeValueEntity2.setId(2L);
         sellAttributeValueEntity2.setAttributeId(1L);
         sellAttributeValueEntity2.setAttributeValue("钻石会员");
-        sellAttributeValueService.save(sellAttributeValueEntity2);
+        sellAttributeValueService.insert(sellAttributeValueEntity2);
 
         SellAttributeValueEntity sellAttributeValueEntity3 = new SellAttributeValueEntity();
         sellAttributeValueEntity2.setId(2L);
         sellAttributeValueEntity2.setAttributeId(2L);
         sellAttributeValueEntity2.setAttributeValue("一年");
-        sellAttributeValueService.save(sellAttributeValueEntity2);
+        sellAttributeValueService.insert(sellAttributeValueEntity2);
 
         SellAttributeValueEntity sellAttributeValueEntity4 = new SellAttributeValueEntity();
         sellAttributeValueEntity4.setId(2L);
         sellAttributeValueEntity4.setAttributeId(2L);
         sellAttributeValueEntity4.setAttributeValue("一个月");
-        sellAttributeValueService.save(sellAttributeValueEntity2);
+        sellAttributeValueService.insert(sellAttributeValueEntity2);
 
         //商品
         ProductEntity productEntity = new ProductEntity();
         productEntity.setId(1L);
         productEntity.setName("会员等级购买");
         productEntity.setCategoryId(1L);
-        goodsService.save(productEntity);
+        productService.insert(productEntity);
 
 
         //sku
         GoodsSkuEntity goodsSkuEntity = new GoodsSkuEntity();
-        goodsSkuEntity.setGoodsId(1L);
+        goodsSkuEntity.setProductId(1L);
         goodsSkuEntity.setOnSale(false);
         goodsSkuEntity.setStock(99L);
-        goodsSkuEntity.setPrice(new BigDecimal(10.00));
+        goodsSkuEntity.setPrice("10.00");
 
         //图片
         GoodsImageEntity goodsImageEntity = new GoodsImageEntity();
         goodsImageEntity.setSkuId(goodsSkuEntity.getId());
         goodsImageEntity.setImagePath("");
-        goodsImageService.save(goodsImageEntity);
+        goodsImageService.insert(goodsImageEntity);
 
         //商品销售属性
         GoodsSellAttributeEntity goodsSellAttributeEntity1 = new GoodsSellAttributeEntity();

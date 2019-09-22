@@ -67,7 +67,9 @@ public class FormGetController {
                         formField.setFormHtml(fieldDefinition.generateFormItemReadHtml(pageConfig,request, fieldValue));
                     }
                 }
-                responseList.add(formField);
+                if(!formField.isFormHide()){
+                    responseList.add(formField);
+                }
             }
 
         }

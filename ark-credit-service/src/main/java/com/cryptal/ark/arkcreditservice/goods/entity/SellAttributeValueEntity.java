@@ -1,13 +1,15 @@
 package com.cryptal.ark.arkcreditservice.goods.entity;
 
+import cn.com.gome.cloud.openplatform.open.OpenConvertible;
+import com.cryptal.ark.interfaze.goods.domain.SellAttributeValue;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.io.Serializable;
 
 @Entity
-public class SellAttributeValueEntity implements Serializable {
+public class SellAttributeValueEntity implements OpenConvertible<SellAttributeValue> {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -17,6 +19,11 @@ public class SellAttributeValueEntity implements Serializable {
      * 销售属性ID
      */
     private Long attributeId;
+
+    /**
+     * 分类ID
+     */
+    private Long categoryId;
 
     /**
      * 销售属性正文
@@ -46,4 +53,35 @@ public class SellAttributeValueEntity implements Serializable {
     public void setAttributeValue(String attributeValue) {
         this.attributeValue = attributeValue;
     }
+
+    public Long getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    @Override
+    public SellAttributeValue converter() {
+        SellAttributeValue sellAttributeValue = new SellAttributeValue();
+        sellAttributeValue.setId(id);
+        sellAttributeValue.setCategoryId(categoryId);
+        sellAttributeValue.setAttributeId(attributeId);
+        sellAttributeValue.setAttributeValue(attributeValue);
+        return sellAttributeValue;
+    }
+
+    public static SellAttributeValueEntity constructFrom(SellAttributeValue sellAttributeValue) {
+
+        SellAttributeValueEntity sellAttributeValueEntity = new SellAttributeValueEntity();
+        sellAttributeValueEntity.setId(sellAttributeValue.getId());
+        sellAttributeValueEntity.setCategoryId(sellAttributeValue.getCategoryId());
+        sellAttributeValueEntity.setAttributeId(sellAttributeValue.getAttributeId());
+        sellAttributeValueEntity.setAttributeValue(sellAttributeValue.getAttributeValue());
+        return sellAttributeValueEntity;
+
+    }
+
+
 }

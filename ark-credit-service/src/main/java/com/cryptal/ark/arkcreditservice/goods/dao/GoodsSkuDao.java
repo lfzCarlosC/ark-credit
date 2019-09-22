@@ -1,8 +1,8 @@
 package com.cryptal.ark.arkcreditservice.goods.dao;
 
+import cn.com.gome.cloud.openplatform.repository.GenericDao;
 import com.cryptal.ark.arkcreditservice.goods.entity.GoodsSkuEntity;
-import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface GoodsSkuDao extends JpaRepository<GoodsSkuEntity,Long> {
+public interface GoodsSkuDao extends GenericDao<GoodsSkuEntity,Long> {
 
 }

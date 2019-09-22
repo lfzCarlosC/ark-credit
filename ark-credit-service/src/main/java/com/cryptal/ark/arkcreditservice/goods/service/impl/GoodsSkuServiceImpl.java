@@ -1,13 +1,21 @@
 package com.cryptal.ark.arkcreditservice.goods.service.impl;
 
+import cn.com.gome.cloud.openplatform.repository.GenericDao;
+import cn.com.gome.cloud.openplatform.service.impl.GenericServiceImpl;
+import com.cryptal.ark.arkcreditservice.goods.dao.GoodsSkuDao;
 import com.cryptal.ark.arkcreditservice.goods.entity.GoodsSkuEntity;
 import com.cryptal.ark.arkcreditservice.goods.service.GoodsSkuService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class GoodsSkuServiceImpl implements GoodsSkuService {
+public class GoodsSkuServiceImpl extends GenericServiceImpl<GoodsSkuEntity,Long> implements GoodsSkuService {
+
+    @Autowired
+    private GoodsSkuDao goodsSkuDao;
+
     @Override
-    public GoodsSkuEntity findById(Long skuId) {
-        return null;
+    protected GenericDao<GoodsSkuEntity, Long> getDao() {
+        return goodsSkuDao;
     }
 }

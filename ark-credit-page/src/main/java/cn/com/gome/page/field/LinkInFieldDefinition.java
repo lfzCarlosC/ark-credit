@@ -62,7 +62,7 @@ public class LinkInFieldDefinition  extends DomainLongFieldDefinition{
         stringBuilder.append("<span class=\"select-box inline\" id=\"link_in_" + fieldName + "\">");
         for (int i = 0; i < linkInDomains.size(); i++) {
 
-            String selectValue = BeanUtils.getPropertyValue(entity, linkInDomains.get(i).getFieldId()).toString();
+            String selectValue = String.valueOf(BeanUtils.getPropertyValue(entity, linkInDomains.get(i).getFieldId()));
 
             String requestValue = request.getParameter(linkInDomains.get(i).getFieldId());
             if (!Strings.isNullOrEmpty(requestValue)){

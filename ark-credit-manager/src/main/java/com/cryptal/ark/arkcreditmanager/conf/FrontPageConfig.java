@@ -33,9 +33,7 @@ public class FrontPageConfig {
                 )
                 .addRootItem("产品管理","goods",
                         new LeafItem("产品分类管理", "/admin/product_category/page"),
-                        new LeafItem("销售属性管理", "/admin/sell_category/page"),
-                        new LeafItem("商品管理", "/admin/goods/page"),
-                        new LeafItem("留言管理", "/admin/comment/page")
+                        new LeafItem("商品管理", "/admin/product/page")
                 )
                 .addRootItem("订单管理","order",
                         new LeafItem("订单管理", "/admin/order/page")

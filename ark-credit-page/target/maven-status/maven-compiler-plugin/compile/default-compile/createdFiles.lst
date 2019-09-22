@@ -16,6 +16,7 @@ cn\com\gome\page\field\DomainStringFieldDefinition.class
 cn\com\gome\page\plugins\upload\EditorUploadFile.class
 cn\com\gome\page\button\column\LinkWithIdOperation.class
 cn\com\gome\page\plugins\upload\EmptyUploadPlugin.class
+cn\com\gome\page\field\domain\LinkInObject.class
 cn\com\gome\page\button\column\ColumnAction.class
 cn\com\gome\page\button\column\DisplayContentOperation.class
 cn\com\gome\page\controller\DetailController.class

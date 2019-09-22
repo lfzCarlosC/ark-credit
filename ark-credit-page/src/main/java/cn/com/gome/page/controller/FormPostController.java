@@ -51,7 +51,7 @@ public class FormPostController {
 
         List<FormField> formFields = pageConfig.getFormFields();
         for (FormField formField : formFields) {
-            if(formField.isFormEditable()){
+            if(formField.isFormEditable()||formField.isFormHide()){
                 fillObjectFieldValue(request,entity,formField);
             }
         }

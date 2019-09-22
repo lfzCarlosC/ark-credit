@@ -19,6 +19,11 @@ public class FormField {
 
     private boolean formEditable;
 
+    /**
+     * 多级下拉，不可读，也不可编辑，但是保存时需要读取request保存
+     */
+    private boolean formHide;
+
     private String detailHtml = "";
 
     private String formHtml = "";
@@ -49,6 +54,9 @@ public class FormField {
         switch (supplyPart){
             case "r" :
                 formField.setFormReadable(true);
+                break;
+            case "h":
+                formField.setFormHide(true);
                 break;
             case "rw":
                 formField.setFormEditable(true);
@@ -113,5 +121,13 @@ public class FormField {
 
     public void setPageConfig(PageConfig pageConfig) {
         this.pageConfig = pageConfig;
+    }
+
+    public boolean isFormHide() {
+        return formHide;
+    }
+
+    public void setFormHide(boolean formHide) {
+        this.formHide = formHide;
     }
 }

@@ -10,6 +10,8 @@ import com.cryptal.ark.interfaze.goods.domain.SellAttribute;
 import com.cryptal.ark.interfaze.goods.dubbo.goods.SellAttributeDubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 @Service(group="ark-credit-service")
 public class SellAttributeDubboServiceImpl implements SellAttributeDubboService {
 
@@ -40,5 +42,15 @@ public class SellAttributeDubboServiceImpl implements SellAttributeDubboService 
     @Override
     public void delete(Long id) {
         sellAttributeService.delete(id);
+    }
+
+    @Override
+    public List<SellAttribute> findAll() {
+        return OpenConverterUtils.convertList(sellAttributeService.list(SearchFilter.getDefault()));
+    }
+
+    @Override
+    public List<SellAttribute> findByCategoryId(Long categoryId) {
+        return OpenConverterUtils.convertList(sellAttributeService.findByCategoryId(categoryId));
     }
 }
