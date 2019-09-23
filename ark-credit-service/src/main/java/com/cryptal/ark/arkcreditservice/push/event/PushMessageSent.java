@@ -1,7 +1,7 @@
 package com.cryptal.ark.arkcreditservice.push.event;
 
-import com.cryptal.ark.arkcreditservice.push.domain.PushMessage;
-import com.cryptal.ark.arkcreditservice.push.domain.SendResult;
+import com.cryptal.ark.arkcreditservice.push.entity.PushMessageEntity;
+import com.cryptal.ark.arkcreditservice.push.entity.SendResult;
 import com.cryptal.ark.arkcreditservice.rank.domain.RankMessageType;
 import com.cryptal.ark.arkcreditservice.user.domain.Device;
 import org.springframework.context.ApplicationEvent;
@@ -44,11 +44,11 @@ public class PushMessageSent extends ApplicationEvent {
      */
     private Long deviceId;
 
-    public PushMessageSent(Object source, PushMessage pushMessage, Device device, RankMessageType rankMessageType, SendResult sendResult) {
+    public PushMessageSent(Object source, PushMessageEntity pushMessageEntity, Device device, RankMessageType rankMessageType, SendResult sendResult) {
         super(source);
-        this.content = pushMessage.getContent();
-        this.pushTime = pushMessage.getPushTime();
-        this.messageTypeId = pushMessage.getMessageTypeId();
+        this.content = pushMessageEntity.getContent();
+        this.pushTime = pushMessageEntity.getPushTime();
+        this.messageTypeId = pushMessageEntity.getMessageTypeId();
         this.deviceId = device.getId();
         this.userId = device.getUserId();
         this.rankId = rankMessageType.getRankId();

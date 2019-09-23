@@ -1,23 +1,23 @@
 package com.cryptal.ark.arkcreditservice.push.event;
 
-import com.cryptal.ark.arkcreditservice.push.domain.PushMessage;
+import com.cryptal.ark.arkcreditservice.push.entity.PushMessageEntity;
 import org.springframework.context.ApplicationEvent;
 
 public class PushMessageReceived extends ApplicationEvent {
 
-    private PushMessage pushMessage;
+    private PushMessageEntity pushMessageEntity;
 
-    public PushMessageReceived(Object source,PushMessage pushMessage) {
+    public PushMessageReceived(Object source, PushMessageEntity pushMessageEntity) {
         super(source);
-        this.pushMessage = pushMessage;
+        this.pushMessageEntity = pushMessageEntity;
     }
 
-    public PushMessage getPushMessage() {
-        return pushMessage;
+    public PushMessageEntity getPushMessageEntity() {
+        return pushMessageEntity;
     }
 
-    public void setPushMessage(PushMessage pushMessage) {
-        this.pushMessage = pushMessage;
+    public void setPushMessageEntity(PushMessageEntity pushMessageEntity) {
+        this.pushMessageEntity = pushMessageEntity;
     }
 
 }

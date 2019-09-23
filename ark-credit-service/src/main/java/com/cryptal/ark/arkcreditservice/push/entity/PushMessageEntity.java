@@ -1,11 +1,11 @@
-package com.cryptal.ark.arkcreditservice.push.domain;
+package com.cryptal.ark.arkcreditservice.push.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.Date;
 
 @Entity
-public class PushMessage {
+public class PushMessageEntity {
 
     @Id
     private long id;

@@ -1,4 +1,4 @@
-package com.cryptal.ark.arkcreditservice.push.domain;
+package com.cryptal.ark.arkcreditservice.push.entity;
 
 import java.io.Serializable;
 

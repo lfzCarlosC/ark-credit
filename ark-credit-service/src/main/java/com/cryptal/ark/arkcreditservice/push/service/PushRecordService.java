@@ -1,12 +1,12 @@
 package com.cryptal.ark.arkcreditservice.push.service;
 
-import com.cryptal.ark.arkcreditservice.push.domain.PushRecord;
+import com.cryptal.ark.arkcreditservice.push.entity.PushRecordEntity;
 
 public interface PushRecordService {
 
     /**
      *
-     * @param pushRecord
+     * @param pushRecordEntity
      */
-    void insert(PushRecord pushRecord);
+    void insert(PushRecordEntity pushRecordEntity);
 }

@@ -1,6 +1,6 @@
 package com.cryptal.ark.arkcreditservice.push.eventhandler;
 
-import com.cryptal.ark.arkcreditservice.push.domain.PushRecord;
+import com.cryptal.ark.arkcreditservice.push.entity.PushRecordEntity;
 import com.cryptal.ark.arkcreditservice.push.event.PushMessageReceived;
 import com.cryptal.ark.arkcreditservice.push.event.PushMessageSent;
 import com.cryptal.ark.arkcreditservice.push.service.PushMessageService;
@@ -24,17 +24,17 @@ public class PushEventHandler {
      */
     @EventListener
     public void handle(PushMessageSent event){
-        PushRecord pushRecord = constructPushRecord(event);
-        pushRecordService.insert(pushRecord);
+        PushRecordEntity pushRecordEntity = constructPushRecord(event);
+        pushRecordService.insert(pushRecordEntity);
     }
 
     @EventListener
     public void handle(PushMessageReceived event){
-        pushMessageService.send(event.getPushMessage());
+        pushMessageService.send(event.getPushMessageEntity());
     }
 
-    private PushRecord constructPushRecord(PushMessageSent event) {
-        return new PushRecord();
+    private PushRecordEntity constructPushRecord(PushMessageSent event) {
+        return new PushRecordEntity();
     }
 
 }

@@ -1,8 +1,8 @@
 package com.cryptal.ark.arkcreditservice.push.service.impl;
 
 import com.cryptal.ark.arkcreditservice.push.dao.PushMessageDao;
-import com.cryptal.ark.arkcreditservice.push.domain.PushMessage;
-import com.cryptal.ark.arkcreditservice.push.domain.SendResult;
+import com.cryptal.ark.arkcreditservice.push.entity.PushMessageEntity;
+import com.cryptal.ark.arkcreditservice.push.entity.SendResult;
 import com.cryptal.ark.arkcreditservice.push.event.PushMessageReceived;
 import com.cryptal.ark.arkcreditservice.push.event.PushMessageSent;
 import com.cryptal.ark.arkcreditservice.push.service.PushMessageService;
@@ -47,26 +47,26 @@ public class PushMessageServiceImpl implements PushMessageService {
     @Override
     public void receiveMsg(Long messageTypeId, String content) {
 
-        PushMessage pushMessage = new PushMessage();
-        pushMessage.setContent(content);
-        pushMessage.setMessageTypeId(messageTypeId);
-        pushMessage.setPushTime(new Date());
-        pushMessageDao.save(pushMessage);
+        PushMessageEntity pushMessageEntity = new PushMessageEntity();
+        pushMessageEntity.setContent(content);
+        pushMessageEntity.setMessageTypeId(messageTypeId);
+        pushMessageEntity.setPushTime(new Date());
+        pushMessageDao.save(pushMessageEntity);
 
-        publisher.publishEvent(new PushMessageReceived(this,pushMessage));
+        publisher.publishEvent(new PushMessageReceived(this, pushMessageEntity));
     }
 
 
 
     @Override
-    public void send(PushMessage pushMessage) {
-        List<RankMessageType> rankMessageTypeList = rankMessageTypeService.findByMessageTypeId(pushMessage.getMessageTypeId());
+    public void send(PushMessageEntity pushMessageEntity) {
+        List<RankMessageType> rankMessageTypeList = rankMessageTypeService.findByMessageTypeId(pushMessageEntity.getMessageTypeId());
         for (RankMessageType rankMessageType : rankMessageTypeList) {
             List<Long> memberUserIds = memberService.findUserIdsByRankId(rankMessageType.getRankId());
             List<Device> devices = deviceService.findByIds(memberUserIds);
             for (Device device : devices) {
                 SendResult sendResult = sendPushMessage(device);
-                publisher.publishEvent(new PushMessageSent(this,pushMessage,device,rankMessageType,sendResult));
+                publisher.publishEvent(new PushMessageSent(this, pushMessageEntity,device,rankMessageType,sendResult));
             }
         }
     }

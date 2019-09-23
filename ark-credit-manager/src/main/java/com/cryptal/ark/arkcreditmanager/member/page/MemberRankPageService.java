@@ -11,15 +11,15 @@ import cn.com.gome.page.core.PageService;
 import cn.com.gome.page.field.DisplayStringFieldDefinition;
 import cn.com.gome.page.field.LongFieldDefinition;
 import cn.com.gome.page.field.validator.IntFieldDefinition;
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.cryptal.ark.interfaze.member.domain.MemberRank;
 import com.cryptal.ark.interfaze.member.dubbo.MemberRankDubboService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class MemberRankPageService extends PageService<MemberRank,Long> {
 
-    @Autowired
+    @Reference(group = "ark-credit-service")
     private MemberRankDubboService memberRankDubboService;
 
     @Override

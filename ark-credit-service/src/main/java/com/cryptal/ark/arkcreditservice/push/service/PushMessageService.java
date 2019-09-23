@@ -1,6 +1,6 @@
 package com.cryptal.ark.arkcreditservice.push.service;
 
-import com.cryptal.ark.arkcreditservice.push.domain.PushMessage;
+import com.cryptal.ark.arkcreditservice.push.entity.PushMessageEntity;
 
 public interface PushMessageService {
 
@@ -14,5 +14,5 @@ public interface PushMessageService {
     /**
      * 发送消息给用户设备
      */
-    void send(PushMessage pushMessage);
+    void send(PushMessageEntity pushMessageEntity);
 }

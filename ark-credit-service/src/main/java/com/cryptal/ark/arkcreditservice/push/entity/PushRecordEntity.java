@@ -1,4 +1,4 @@
-package com.cryptal.ark.arkcreditservice.push.domain;
+package com.cryptal.ark.arkcreditservice.push.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-public class PushRecord implements Serializable {
+public class PushRecordEntity implements Serializable {
 
     @Id
     private Long id;

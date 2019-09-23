@@ -42,6 +42,11 @@ public class FrontPageConfig {
                         new LeafItem("等级管理", "/admin/member_rank/page"),
                         new LeafItem("会员管理", "/admin/member/page")
                 )
+                .addRootItem("推送管理","member",
+                        new LeafItem("权限管理", "/admin/push_permission/page"),
+                        new LeafItem("消息管理", "/admin/push_permission/page"),
+                        new LeafItem("消息推送记录", "/admin/member/page")
+                )
                 .addRootItem("财务管理","finance",
                         new LeafItem("充值管理", "/admin/recharge/page"),
                         new LeafItem("提现管理", "/admin/withdraw/page"),
