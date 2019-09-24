@@ -151,8 +151,8 @@
         });
     }
 
-    function add(title, domain, w, h) {
-        var link = '/admin/' + domain + '/form' + queryString;
+    function add(title, domain, action, w, h) {
+        var link = '/admin/' + domain + '/' + action + queryString;
         layer_show(title, link, w, h);
     }
 

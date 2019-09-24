@@ -25,7 +25,6 @@ public class FormGetController {
     @Autowired
     private PageManager pageManager;
 
-
     @GetMapping("/{domainName}/form")
     public String formGet(HttpServletRequest request, @PathVariable String domainName, Model model){
 

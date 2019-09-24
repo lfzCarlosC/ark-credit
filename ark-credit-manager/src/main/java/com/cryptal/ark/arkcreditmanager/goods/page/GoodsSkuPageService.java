@@ -32,7 +32,7 @@ public class GoodsSkuPageService  extends PageService<GoodsSku,Long> {
         return new PageConfig(pageContext)
                 .withDomainName("goods_sku")
                 .withDomainClass(GoodsSku.class)
-                .withDomainChineseName("接口")
+                .withDomainChineseName("商品SKU")
                 .withFieldDefinitions(
                         new LongFieldDefinition("id", "ID"),
                         new DisplayStringFieldDefinition("skuName", "名称").required(),
@@ -54,13 +54,13 @@ public class GoodsSkuPageService  extends PageService<GoodsSku,Long> {
                         "#operation_20"
                 )
                 .withTableAction(
-                        new CreateOperation()
+                        new CreateOperation("createSku")
                 )
                 .withColumnAction(
                         new NewPageOperation("主图设置","/admin/goods_image/page?skuId=#id#","主图设置","id"),
                         new NewPageOperation("销售属性设置","/admin/goods_sell_attribute/page?skuId=#id#","销售属性设置","id"),
                         new EnableOperation("onSale"),
-                        new EditOperation(),
+                        new EditOperation("editSku"),
                         new DeleteOperation()
                 )
                 .withFormItemDefinition(

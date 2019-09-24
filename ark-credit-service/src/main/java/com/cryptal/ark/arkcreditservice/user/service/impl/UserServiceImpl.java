@@ -4,7 +4,7 @@ import com.cryptal.ark.arkcreditservice.common.EncryptUtil;
 import com.cryptal.ark.arkcreditservice.common.exp.CreditException;
 import com.cryptal.ark.arkcreditservice.order.event.OrderCreated;
 import com.cryptal.ark.arkcreditservice.rank.domain.RankConstant;
-import com.cryptal.ark.arkcreditservice.member.service.MemberRankService;
+import com.cryptal.ark.arkcreditservice.member.service.RankService;
 import com.cryptal.ark.arkcreditservice.user.dao.UserDao;
 import com.cryptal.ark.arkcreditservice.user.domain.User;
 import com.cryptal.ark.arkcreditservice.user.event.UserAmountAdded;
@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
     private ApplicationEventPublisher publisher;
 
     @Autowired
-    private MemberRankService memberRankService;
+    private RankService rankService;
 
     @Override
     public void register(RegisterUserRequest request) {
@@ -91,7 +91,7 @@ public class UserServiceImpl implements UserService {
      */
     private void handleInviteUser(BigDecimal paymentAmount, Long inviteUserId, int level) {
         User invitedUser = checkAndFindById(inviteUserId);
-        int rebatePercent = memberRankService.computeRebatePercent(invitedUser.getRankId(), level);
+        int rebatePercent = rankService.computeRebatePercent(invitedUser.getRankId(), level);
         BigDecimal rebateAmount = paymentAmount.multiply(new BigDecimal(rebatePercent / 100));
         invitedUser.setBalance(invitedUser.getBalance().add(rebateAmount));
         publisher.publishEvent(new UserAmountAdded(this, invitedUser.getId(), rebateAmount, "邀请用户付款赠予积分"));
