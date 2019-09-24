@@ -1,4 +1,4 @@
-package com.cryptal.ark.arkcreditservice.goods.request;
+package com.cryptal.ark.interfaze.goods.request;
 
 import java.io.Serializable;
 import java.util.List;

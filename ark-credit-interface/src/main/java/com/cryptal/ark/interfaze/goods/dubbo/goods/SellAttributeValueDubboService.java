@@ -4,6 +4,8 @@ import cn.com.gome.cloud.openplatform.common.PageObject;
 import cn.com.gome.cloud.openplatform.common.SearchFilter;
 import com.cryptal.ark.interfaze.goods.domain.SellAttributeValue;
 
+import java.util.List;
+
 public interface SellAttributeValueDubboService {
 
     PageObject<SellAttributeValue> page(SearchFilter searchFilter);
@@ -15,4 +17,6 @@ public interface SellAttributeValueDubboService {
     void saveOrUpdate(SellAttributeValue sellAttributeValue);
 
     void delete(Long id);
+
+    List<SellAttributeValue> findByAttributeId(Long sellAttributeId);
 }
