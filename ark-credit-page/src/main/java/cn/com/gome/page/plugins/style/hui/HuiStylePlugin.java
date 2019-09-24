@@ -91,8 +91,8 @@ public class HuiStylePlugin implements StylePlugin {
     }
 
     @Override
-    public String getCreateActionHtml() {
-        return "<a class=\"btn btn-primary radius\" style=\"margin-left:5px\" onclick=\"add('添加#domain中文名字#','#domainName#')\" href=\"javascript:;\"><i class=\"Hui-iconfont\">\uE600</i> 添加#domain中文名字#</a>";
+    public String getCreateActionHtml(String action) {
+        return "<a class=\"btn btn-primary radius\" style=\"margin-left:5px\" onclick=\"add('添加#domain中文名字#','#domainName#','" + action + "')\" href=\"javascript:;\"><i class=\"Hui-iconfont\">\uE600</i> 添加#domain中文名字#</a>";
     }
 
     private static String appendSelectedClass(String selectedValue, String optionValue) {

@@ -50,6 +50,7 @@ public interface StylePlugin {
     /**
      * 创建按钮HTML
      * @return
+     * @param action
      */
-    String getCreateActionHtml();
+    String getCreateActionHtml(String action);
 }

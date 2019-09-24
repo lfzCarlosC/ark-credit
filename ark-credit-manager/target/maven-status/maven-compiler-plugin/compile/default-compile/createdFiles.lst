@@ -1,3 +1,4 @@
+com\cryptal\ark\arkcreditmanager\push\page\PushPermissionPageService.class
 com\cryptal\ark\arkcreditmanager\goods\page\ProductPageService.class
 com\cryptal\ark\arkcreditmanager\goods\page\GoodsImagePageService.class
 com\cryptal\ark\arkcreditmanager\conf\CustomAuthenticationProvider.class
@@ -10,5 +11,6 @@ com\cryptal\ark\arkcreditmanager\conf\WebSecurityConfig.class
 com\cryptal\ark\arkcreditmanager\conf\DubboConfiguration.class
 com\cryptal\ark\arkcreditmanager\ArkCreditApplication.class
 com\cryptal\ark\arkcreditmanager\manager\CommonFileUploadPlugin.class
+com\cryptal\ark\arkcreditmanager\member\page\MemberRankPageService.class
 com\cryptal\ark\arkcreditmanager\conf\FrontPageConfig.class
 com\cryptal\ark\arkcreditmanager\goods\page\SellAttributeValuePageService.class

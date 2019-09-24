@@ -73,14 +73,17 @@ public class DomainLongFieldDefinition extends LongFieldDefinition{
 
         Long selectValue = 0L;
 
-        if (entity != null) {
+        if (request.getParameter(fieldName) == null) {
             Long requestValue = (Long) BeanUtils.getPropertyValue(entity, fieldName);
             if(requestValue!=null){
                 selectValue = requestValue;
             }
+            return pageContext.getStylePlugin().buildSelectBoxFilterHtml(optionHashMap,fieldName,description,String.valueOf(selectValue));
+        }else{
+            selectValue = Long.parseLong(request.getParameter(fieldName));
+            return "<input type=\"hidden\" name=\"" + fieldName + "\" value=\""+selectValue+"\"/>\n" + optionHashMap.get(String.valueOf(selectValue));
         }
 
-        return  pageContext.getStylePlugin().buildSelectBoxFilterHtml(optionHashMap,fieldName,description,String.valueOf(selectValue));
 
     }
 }

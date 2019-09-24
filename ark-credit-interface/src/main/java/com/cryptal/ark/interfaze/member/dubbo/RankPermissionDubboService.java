@@ -6,13 +6,14 @@ import com.cryptal.ark.interfaze.member.domain.RankPermission;
 
 public interface RankPermissionDubboService {
 
-    RankPermission get(SearchFilter searchFilter);
-
     RankPermission get(Long id);
+
+    RankPermission get(SearchFilter searchFilter);
 
     PageObject<RankPermission> page(SearchFilter searchFilter);
 
     void saveOrUpdate(RankPermission rankPermission);
 
     void delete(Long id);
+
 }
