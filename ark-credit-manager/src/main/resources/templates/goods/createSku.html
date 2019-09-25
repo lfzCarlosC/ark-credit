@@ -66,14 +66,24 @@
         <form method="post" class="form form-horizontal" id="form">
             <input type="hidden" name="productId" th:value="${productId}"/>
 
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2">
+                    产品名称：
+                </label>
+                <div class="formControls col-xs-6 col-sm-9" th:text="${product.name}">
+
+                </div>
+                <div class="col-2"></div>
+            </div>
+
             <th:block th:each="sellAttribute,sellAttributeStat:${sellAttributeMap}">
                 <div class="row cl">
-                    <label class="form-label col-xs-4 col-sm-2" th:text="${sellAttributeStat.current.key.name}">
+                    <label class="form-label col-xs-4 col-sm-2" th:text="|${sellAttributeStat.current.key.name}：|">
                     </label>
                     <div class="formControls col-xs-6 col-sm-9">
                     <span class="select-box inline">
-                        <select name="status" class="select valid" aria-invalid="false">
-                            <option th:value="" th:text="'选择 - ：' + ${sellAttributeStat.current.key.name}"></option>
+                        <select th:name="|sell_attribute_${sellAttributeStat.current.key.id}|" class="select valid" aria-invalid="false">
+                            <option value="" th:text="|选择 - ${sellAttributeStat.current.key.name}|"></option>
                             <th:block th:each="sellAttributeValue:${sellAttributeStat.current.value}">
                                 <option th:value="${sellAttributeValue.id}" th:text="${sellAttributeValue.attributeValue}">无</option>
                             </th:block>

@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface SellAttributeDao extends GenericDao<SellAttributeEntity,Long> {
 
-    List<SellAttributeEntity> findByCategoryId(Long categoryId);
+    List<SellAttributeEntity> findByCategoryIdOrderBySortNumAsc(Long categoryId);
 
 }

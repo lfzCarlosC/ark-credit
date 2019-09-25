@@ -18,7 +18,7 @@ public class SellAttributeServiceImpl extends GenericServiceImpl<SellAttributeEn
 
     @Override
     public List<SellAttributeEntity> findByCategoryId(Long categoryId) {
-        return sellAttributeDao.findByCategoryId(categoryId);
+        return sellAttributeDao.findByCategoryIdOrderBySortNumAsc(categoryId);
     }
 
     @Override

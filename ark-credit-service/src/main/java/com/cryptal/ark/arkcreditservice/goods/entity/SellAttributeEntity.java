@@ -19,6 +19,8 @@ public class SellAttributeEntity implements OpenConvertible<SellAttribute> {
 
     private Long categoryId;
 
+    private Integer sortNum;
+
     public Long getId() {
         return id;
     }
@@ -43,12 +45,21 @@ public class SellAttributeEntity implements OpenConvertible<SellAttribute> {
         this.name = name;
     }
 
+    public Integer getSortNum() {
+        return sortNum;
+    }
+
+    public void setSortNum(Integer sortNum) {
+        this.sortNum = sortNum;
+    }
+
     @Override
     public SellAttribute converter() {
         SellAttribute sellAttribute = new SellAttribute();
         sellAttribute.setId(id);
         sellAttribute.setName(name);
         sellAttribute.setCategoryId(categoryId);
+        sellAttribute.setSortNum(sortNum);
         return sellAttribute;
     }
 
@@ -57,6 +68,7 @@ public class SellAttributeEntity implements OpenConvertible<SellAttribute> {
         sellAttributeEntity.setId(sellAttribute.getId());
         sellAttributeEntity.setCategoryId(sellAttribute.getCategoryId());
         sellAttributeEntity.setName(sellAttribute.getName());
+        sellAttributeEntity.setSortNum(sellAttribute.getSortNum());
         return sellAttributeEntity;
     }
 }

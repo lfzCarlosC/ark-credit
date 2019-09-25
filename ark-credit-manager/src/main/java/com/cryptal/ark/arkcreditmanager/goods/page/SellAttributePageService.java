@@ -15,6 +15,7 @@ import cn.com.gome.page.field.LongFieldDefinition;
 import cn.com.gome.page.field.domain.LinkInObject;
 import cn.com.gome.page.field.linkin.LinkInDomain;
 import cn.com.gome.page.field.linkin.LinkInProvider;
+import cn.com.gome.page.field.validator.IntFieldDefinition;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.cryptal.ark.interfaze.goods.domain.ProductCategory;
 import com.cryptal.ark.interfaze.goods.domain.SellAttribute;
@@ -57,13 +58,15 @@ public class SellAttributePageService extends PageService<SellAttribute,Long> im
                 .withFieldDefinitions(
                         new LongFieldDefinition("id", "ID"),
                         new DisplayStringFieldDefinition("name", "名称").required(),
+                        new IntFieldDefinition("sortNum", "排序号").required(),
                         new CategoryFieldDefinition("categoryId", "分类",productCategoryPageService).required()
                 )
                 .withTableColumnDefinitions(
                         "id_10",
                         "name_30",
+                        "sortNum_20",
                         "categoryId_20",
-                        "#operation_40"
+                        "#operation_20"
                 )
                 .withFilterDefinitions("categoryId")
                 .withTableAction(
@@ -76,7 +79,8 @@ public class SellAttributePageService extends PageService<SellAttribute,Long> im
                 )
                 .withFormItemDefinition(
                         "name_rw",
-                        "categoryId_rw"
+                        "categoryId_rw",
+                        "sortNum_rw"
                 );
         return pageConfig;
     }

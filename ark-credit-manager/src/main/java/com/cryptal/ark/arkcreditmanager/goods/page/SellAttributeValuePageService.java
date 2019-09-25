@@ -12,6 +12,7 @@ import cn.com.gome.page.field.DomainLongFieldDefinition;
 import cn.com.gome.page.field.LinkInFieldDefinition;
 import cn.com.gome.page.field.LongFieldDefinition;
 import cn.com.gome.page.field.StringFieldDefinition;
+import cn.com.gome.page.field.validator.IntFieldDefinition;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.cryptal.ark.interfaze.goods.domain.SellAttributeValue;
 import com.cryptal.ark.interfaze.goods.dubbo.goods.SellAttributeValueDubboService;
@@ -45,14 +46,16 @@ public class SellAttributeValuePageService extends PageService<SellAttributeValu
                         new LongFieldDefinition("id", "ID"),
                         new DomainLongFieldDefinition("categoryId", "分类",productCategoryPageService).required(),
                         new LinkInFieldDefinition("attributeId", "销售属性",sellAttributePageService).required(),
+                        new IntFieldDefinition("sortNum", "排序号").required(),
                         new StringFieldDefinition("attributeValue", "销售属性值").required()
                 )
                 .withTableColumnDefinitions(
                         "id_10",
                         "attributeValue_20",
-                        "categoryId_20",
+                        "categoryId_15",
+                        "sortNum_15",
                         "attributeId_20",
-                        "#operation_30"
+                        "#operation_20"
                 )
                 .withFilterDefinitions("attributeId")
                 .withTableAction(
@@ -65,7 +68,8 @@ public class SellAttributeValuePageService extends PageService<SellAttributeValu
                 .withFormItemDefinition(
                         "categoryId_h",
                         "attributeId_rw",
-                        "attributeValue_rw"
+                        "attributeValue_rw",
+                        "sortNum_rw"
                 );
     }
 

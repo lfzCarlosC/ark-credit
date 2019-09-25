@@ -16,6 +16,8 @@ public class SellAttributeValue implements Serializable {
      */
     private Long attributeId;
 
+    private Integer sortNum;
+
     /**
      * 销售属性正文
      */
@@ -51,5 +53,13 @@ public class SellAttributeValue implements Serializable {
 
     public void setCategoryId(Long categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public Integer getSortNum() {
+        return sortNum;
+    }
+
+    public void setSortNum(Integer sortNum) {
+        this.sortNum = sortNum;
     }
 }

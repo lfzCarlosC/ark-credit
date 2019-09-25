@@ -10,6 +10,8 @@ public class SellAttribute implements Serializable {
 
     private Long categoryId;
 
+    private Integer sortNum;
+
     public Long getId() {
         return id;
     }
@@ -34,4 +36,11 @@ public class SellAttribute implements Serializable {
         this.categoryId = categoryId;
     }
 
+    public Integer getSortNum() {
+        return sortNum;
+    }
+
+    public void setSortNum(Integer sortNum) {
+        this.sortNum = sortNum;
+    }
 }

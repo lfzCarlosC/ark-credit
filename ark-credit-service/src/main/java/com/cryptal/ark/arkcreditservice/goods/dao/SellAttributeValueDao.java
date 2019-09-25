@@ -6,5 +6,5 @@ import com.cryptal.ark.arkcreditservice.goods.entity.SellAttributeValueEntity;
 import java.util.List;
 
 public interface SellAttributeValueDao extends GenericDao<SellAttributeValueEntity,Long> {
-    List<SellAttributeValueEntity> findByAttributeId(Long attributeId);
+    List<SellAttributeValueEntity> findByAttributeIdOrderBySortNumAsc(Long attributeId);
 }

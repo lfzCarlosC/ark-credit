@@ -25,6 +25,8 @@ public class SellAttributeValueEntity implements OpenConvertible<SellAttributeVa
      */
     private Long categoryId;
 
+    private Integer sortNum;
+
     /**
      * 销售属性正文
      */
@@ -62,6 +64,14 @@ public class SellAttributeValueEntity implements OpenConvertible<SellAttributeVa
         this.categoryId = categoryId;
     }
 
+    public Integer getSortNum() {
+        return sortNum;
+    }
+
+    public void setSortNum(Integer sortNum) {
+        this.sortNum = sortNum;
+    }
+
     @Override
     public SellAttributeValue converter() {
         SellAttributeValue sellAttributeValue = new SellAttributeValue();
@@ -69,6 +79,7 @@ public class SellAttributeValueEntity implements OpenConvertible<SellAttributeVa
         sellAttributeValue.setCategoryId(categoryId);
         sellAttributeValue.setAttributeId(attributeId);
         sellAttributeValue.setAttributeValue(attributeValue);
+        sellAttributeValue.setSortNum(sortNum);
         return sellAttributeValue;
     }
 
@@ -79,6 +90,7 @@ public class SellAttributeValueEntity implements OpenConvertible<SellAttributeVa
         sellAttributeValueEntity.setCategoryId(sellAttributeValue.getCategoryId());
         sellAttributeValueEntity.setAttributeId(sellAttributeValue.getAttributeId());
         sellAttributeValueEntity.setAttributeValue(sellAttributeValue.getAttributeValue());
+        sellAttributeValueEntity.setSortNum(sellAttributeValue.getSortNum());
         return sellAttributeValueEntity;
 
     }

@@ -57,6 +57,7 @@ public class GoodsController {
 
         model.addAttribute("sellAttributeMap",sellAttributeMap);
         model.addAttribute("productId",productId);
+        model.addAttribute("product",product);
 
         return "goods/createSku";
     }
