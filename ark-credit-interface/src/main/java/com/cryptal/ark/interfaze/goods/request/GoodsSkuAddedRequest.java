@@ -1,7 +1,9 @@
 package com.cryptal.ark.interfaze.goods.request;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class GoodsSkuAddedRequest implements Serializable {
 
@@ -24,6 +26,11 @@ public class GoodsSkuAddedRequest implements Serializable {
      * 主图信息
      */
     private List<String> mainImagePaths;
+
+    /**
+     * 销售属性
+     */
+    private Map<Long,Long> sellAttributeMap = new HashMap<>();
 
     public Long getProductId() {
         return productId;
@@ -55,5 +62,9 @@ public class GoodsSkuAddedRequest implements Serializable {
 
     public void setMainImagePaths(List<String> mainImagePaths) {
         this.mainImagePaths = mainImagePaths;
+    }
+
+    public void addAttribute(Long attributeId, Long valueId) {
+        sellAttributeMap.put(attributeId,valueId);
     }
 }

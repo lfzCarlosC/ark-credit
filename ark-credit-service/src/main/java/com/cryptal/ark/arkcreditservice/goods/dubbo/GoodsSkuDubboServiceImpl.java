@@ -9,6 +9,7 @@ import com.cryptal.ark.arkcreditservice.goods.entity.GoodsSkuEntity;
 import com.cryptal.ark.arkcreditservice.goods.service.GoodsSkuService;
 import com.cryptal.ark.interfaze.goods.domain.GoodsSku;
 import com.cryptal.ark.interfaze.goods.dubbo.goods.GoodsSkuDubboService;
+import com.cryptal.ark.interfaze.goods.request.GoodsSkuAddedRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Service(group="ark-credit-service")
@@ -40,5 +41,10 @@ public class GoodsSkuDubboServiceImpl implements GoodsSkuDubboService {
     @Override
     public void delete(Long id) {
         goodsSkuService.delete(id);
+    }
+
+    @Override
+    public void createSku(GoodsSkuAddedRequest goodsSkuAddedRequest) {
+
     }
 }

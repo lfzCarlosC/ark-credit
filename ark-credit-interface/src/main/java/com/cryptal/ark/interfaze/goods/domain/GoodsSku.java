@@ -8,6 +8,10 @@ public class GoodsSku implements Serializable {
 
     private Long id;
 
+    private String goodsNo;
+
+    private String barCode;
+
     /**
      * 商品名称
      */
@@ -105,5 +109,21 @@ public class GoodsSku implements Serializable {
 
     public void setModifyTime(Date modifyTime) {
         this.modifyTime = modifyTime;
+    }
+
+    public String getGoodsNo() {
+        return goodsNo;
+    }
+
+    public void setGoodsNo(String goodsNo) {
+        this.goodsNo = goodsNo;
+    }
+
+    public String getBarCode() {
+        return barCode;
+    }
+
+    public void setBarCode(String barCode) {
+        this.barCode = barCode;
     }
 }

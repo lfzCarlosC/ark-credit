@@ -33,4 +33,5 @@ public class SellAttribute implements Serializable {
     public void setCategoryId(Long categoryId) {
         this.categoryId = categoryId;
     }
+
 }

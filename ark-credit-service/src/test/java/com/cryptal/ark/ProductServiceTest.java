@@ -20,8 +20,6 @@ public class ProductServiceTest {
         request.setPrice("10");
         request.setProductId(10L);
         request.setStock(10L);
-        request.addAttributeValues(1L,1L);
-        request.addAttributeValues(2L,2L);
         goodsSkuService.addSku(request);
     }
 

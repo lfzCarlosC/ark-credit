@@ -1,6 +1,7 @@
 package com.cryptal.ark.arkcreditmanager.goods.controller;
 
 import cn.com.gome.page.excp.GmosException;
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.cryptal.ark.interfaze.goods.domain.Product;
 import com.cryptal.ark.interfaze.goods.domain.SellAttribute;
 import com.cryptal.ark.interfaze.goods.domain.SellAttributeValue;
@@ -21,22 +22,26 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
+@RequestMapping("/admin/goods_sku")
 public class GoodsController {
 
-
+    @Reference(group = "ark-credit-service")
     private ProductDubboService productDubboService;
 
+    @Reference(group = "ark-credit-service")
     private SellAttributeDubboService sellAttributeDubboService;
 
+    @Reference(group = "ark-credit-service")
     private SellAttributeValueDubboService sellAttributeValueDubboService;
 
+    @Reference(group = "ark-credit-service")
     private GoodsSkuDubboService goodsSkuDubboService;
 
     /**
      * 产品下创建SKU Form页面
      */
     @GetMapping("/createSku")
-    public void createSkuGet(Model mode, Long productId){
+    public String createSkuGet(Model model, Long productId){
 
         Product product = productDubboService.get(productId);
         if(product == null){
@@ -50,8 +55,10 @@ public class GoodsController {
             sellAttributeMap.put(sellAttribute,sellAttributeValues);
         }
 
-        mode.addAttribute("sellAttributeMap",sellAttributeMap);
+        model.addAttribute("sellAttributeMap",sellAttributeMap);
+        model.addAttribute("productId",productId);
 
+        return "goods/createSku";
     }
 
 
@@ -65,13 +72,11 @@ public class GoodsController {
 
         List<SellAttribute> sellAttributes = sellAttributeDubboService.findByCategoryId(product.getCategoryId());
         for (SellAttribute sellAttribute : sellAttributes) {
-
-            httpRequest.getParameter("sell_attribute_" + sellAttribute.getName() );
-
+            String parameter = httpRequest.getParameter("sell_attribute_" + sellAttribute.getId());
+            goodsSkuAddedRequest.addAttribute(sellAttribute.getId(),Long.parseLong(parameter));
         }
 
         goodsSkuDubboService.createSku(goodsSkuAddedRequest);
-
 
     }
 

@@ -22,6 +22,10 @@ public class GoodsSkuEntity implements OpenConvertible<GoodsSku> {
      */
     private Long productId;
 
+    private String goodsNo;
+
+    private String barCode;
+
     /**
      * Sku名称
      */
@@ -117,11 +121,29 @@ public class GoodsSkuEntity implements OpenConvertible<GoodsSku> {
         this.modifyTime = modifyTime;
     }
 
+    public String getGoodsNo() {
+        return goodsNo;
+    }
+
+    public void setGoodsNo(String goodsNo) {
+        this.goodsNo = goodsNo;
+    }
+
+    public String getBarCode() {
+        return barCode;
+    }
+
+    public void setBarCode(String barCode) {
+        this.barCode = barCode;
+    }
+
     @Override
     public GoodsSku converter() {
         GoodsSku goodsSku = new GoodsSku();
         goodsSku.setId(id);
         goodsSku.setProductId(productId);
+        goodsSku.setGoodsNo(goodsNo);
+        goodsSku.setBarCode(barCode);
         goodsSku.setSkuName(skuName);
         goodsSku.setPrice(price);
         goodsSku.setStock(stock);
@@ -135,6 +157,8 @@ public class GoodsSkuEntity implements OpenConvertible<GoodsSku> {
     public static GoodsSkuEntity constructFrom(GoodsSku goodsSku) {
         GoodsSkuEntity goodsSkuEntity = new GoodsSkuEntity();
         goodsSkuEntity.setId(goodsSku.getId());
+        goodsSkuEntity.setGoodsNo(goodsSku.getGoodsNo());
+        goodsSkuEntity.setBarCode(goodsSku.getBarCode());
         goodsSkuEntity.setProductId(goodsSku.getProductId());
         goodsSkuEntity.setSkuName(goodsSku.getSkuName());
         goodsSkuEntity.setStock(goodsSku.getStock());
