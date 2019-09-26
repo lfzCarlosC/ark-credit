@@ -48,6 +48,10 @@ public class DomainStringFieldDefinition extends StringFieldDefinition{
 
         Object obj = pageDomainProvider.findByReferId(id);
 
+        if(obj==null){
+            return "已删除";
+        }
+
         String domainLinkName = (String)BeanUtils.getPropertyValue(obj,pageDomainProvider.getDisplayFieldName());
 
         return String.format("<a style=\"text-decoration:none\" class=\"ml-5 c-primary\" onclick=\"layer_show('%s详细信息','/admin/%s/lay_detail?referId=%s')\" href=\"javascript:;\" title=\"%s\">%s</a>", domainChineseName, domainName, id, id, domainLinkName);

@@ -25,6 +25,10 @@ public class DomainLongFieldDefinition extends LongFieldDefinition{
 
         Object obj = pageDomainProvider.findByReferId(String.valueOf(id));
 
+        if(obj==null){
+            return "已删除";
+        }
+
         String domainLinkName = (String)BeanUtils.getPropertyValue(obj,pageDomainProvider.getDisplayFieldName());
 
         String domainName = pageDomainProvider.getDomainName();
@@ -38,6 +42,10 @@ public class DomainLongFieldDefinition extends LongFieldDefinition{
         Long id = (Long)entity;
 
         Object obj = pageDomainProvider.findByReferId(String.valueOf(id));
+
+        if(obj==null){
+            return "已删除";
+        }
 
         String domainLinkName = (String)BeanUtils.getPropertyValue(obj,pageDomainProvider.getDisplayFieldName());
 
@@ -83,7 +91,6 @@ public class DomainLongFieldDefinition extends LongFieldDefinition{
             selectValue = Long.parseLong(request.getParameter(fieldName));
             return "<input type=\"hidden\" name=\"" + fieldName + "\" value=\""+selectValue+"\"/>\n" + optionHashMap.get(String.valueOf(selectValue));
         }
-
 
     }
 }
