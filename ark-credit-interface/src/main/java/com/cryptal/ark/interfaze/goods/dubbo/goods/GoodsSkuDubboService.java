@@ -18,4 +18,8 @@ public interface GoodsSkuDubboService {
     void delete(Long id);
 
     void createSku(GoodsSkuAddedRequest goodsSkuAddedRequest);
+
+    void enable(Long id);
+
+    void disable(Long parseLong);
 }

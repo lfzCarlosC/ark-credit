@@ -58,7 +58,7 @@ public class ProductPageService  extends PageService<Product,Long> {
                         new CreateOperation()
                 )
                 .withColumnAction(
-                        new NewPageOperation("SKU设置","/admin/goods_sku/page?productId=#id#","SKU设置","id"),
+                        new NewPageOperation("SKU管理","/admin/goods_sku/page?productId=#id#","SKU管理","id"),
                         new EditOperation(),
                         new DeleteOperation()
                 )

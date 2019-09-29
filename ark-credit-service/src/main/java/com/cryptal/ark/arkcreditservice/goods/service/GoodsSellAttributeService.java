@@ -13,4 +13,6 @@ public interface GoodsSellAttributeService extends GenericService<GoodsSellAttri
     GoodsSellAttributeEntity findBySkuIdAndSellAttributeId(Long skuId, long attributeId);
 
     void saveAll(List<GoodsSellAttributeEntity> goodsSellAttributeEntities);
+
+    List<GoodsSellAttributeEntity> findBySku(Long skuId);
 }

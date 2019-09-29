@@ -1,18 +1,16 @@
 package com.cryptal.ark.arkcreditservice.goods.service.impl;
-import java.util.Date;
-import java.util.Map;
 
 import cn.com.gome.cloud.openplatform.repository.GenericDao;
 import cn.com.gome.cloud.openplatform.service.impl.GenericServiceImpl;
+import com.cryptal.ark.arkcreditservice.common.exp.CreditException;
 import com.cryptal.ark.arkcreditservice.goods.dao.GoodsSkuDao;
 import com.cryptal.ark.arkcreditservice.goods.entity.GoodsSkuEntity;
 import com.cryptal.ark.arkcreditservice.goods.service.GoodsSkuService;
-import com.cryptal.ark.interfaze.goods.domain.GoodsSku;
-import com.cryptal.ark.interfaze.goods.request.GoodsSkuAddedRequest;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.Date;
+import java.util.Optional;
 
 @Component
 public class GoodsSkuServiceImpl extends GenericServiceImpl<GoodsSkuEntity,Long> implements GoodsSkuService {
@@ -20,17 +18,34 @@ public class GoodsSkuServiceImpl extends GenericServiceImpl<GoodsSkuEntity,Long>
     @Autowired
     private GoodsSkuDao goodsSkuDao;
 
-    private Gson gson = new GsonBuilder().create();
-
     @Override
     protected GenericDao<GoodsSkuEntity, Long> getDao() {
         return goodsSkuDao;
     }
 
     @Override
-    public void createSku(GoodsSkuAddedRequest goodsSkuAddedRequest) {
+    public GoodsSkuEntity checkAndGet(Long id) {
+        Optional<GoodsSkuEntity> goodsSkuEntityOptional = goodsSkuDao.findById(id);
+        if(goodsSkuEntityOptional.isPresent()){
+            return goodsSkuEntityOptional.get();
+        }
+        throw new CreditException("商品ID不存在" + id);
+    }
 
+    @Override
+    public void enable(Long id) {
+        GoodsSkuEntity goodsSkuEntity = this.checkAndGet(id);
+        goodsSkuEntity.setOnSale(true);
+        goodsSkuEntity.setModifyTime(new Date());
+        goodsSkuDao.save(goodsSkuEntity);
+    }
 
+    @Override
+    public void disable(Long id) {
+        GoodsSkuEntity goodsSkuEntity = this.checkAndGet(id);
+        goodsSkuEntity.setOnSale(false);
+        goodsSkuEntity.setModifyTime(new Date());
+        goodsSkuDao.save(goodsSkuEntity);
     }
 
 }

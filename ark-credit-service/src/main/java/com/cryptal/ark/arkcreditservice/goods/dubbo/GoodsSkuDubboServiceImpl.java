@@ -44,11 +44,21 @@ public class GoodsSkuDubboServiceImpl implements GoodsSkuDubboService {
 
     @Override
     public void delete(Long id) {
-        goodsSkuService.delete(id);
+        goodsFacade.delete(id);
     }
 
     @Override
     public void createSku(GoodsSkuAddedRequest goodsSkuAddedRequest) {
         goodsFacade.addSku(goodsSkuAddedRequest);
+    }
+
+    @Override
+    public void enable(Long id) {
+        goodsSkuService.enable(id);
+    }
+
+    @Override
+    public void disable(Long id) {
+        goodsSkuService.disable(id);
     }
 }

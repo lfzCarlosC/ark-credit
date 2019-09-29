@@ -33,6 +33,11 @@ public class GoodsSellAttributeServiceImpl extends GenericServiceImpl<GoodsSellA
     }
 
     @Override
+    public List<GoodsSellAttributeEntity> findBySku(Long skuId) {
+        return goodsSellAttributeDao.findBySkuId(skuId);
+    }
+
+    @Override
     protected GenericDao<GoodsSellAttributeEntity, Long> getDao() {
         return goodsSellAttributeDao;
     }

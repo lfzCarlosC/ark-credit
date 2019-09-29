@@ -2,13 +2,8 @@ package com.cryptal.ark.arkcreditmanager.goods.controller;
 
 import cn.com.gome.page.excp.GmosException;
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.cryptal.ark.interfaze.goods.domain.Product;
-import com.cryptal.ark.interfaze.goods.domain.SellAttribute;
-import com.cryptal.ark.interfaze.goods.domain.SellAttributeValue;
-import com.cryptal.ark.interfaze.goods.dubbo.goods.GoodsSkuDubboService;
-import com.cryptal.ark.interfaze.goods.dubbo.goods.ProductDubboService;
-import com.cryptal.ark.interfaze.goods.dubbo.goods.SellAttributeDubboService;
-import com.cryptal.ark.interfaze.goods.dubbo.goods.SellAttributeValueDubboService;
+import com.cryptal.ark.interfaze.goods.domain.*;
+import com.cryptal.ark.interfaze.goods.dubbo.goods.*;
 import com.cryptal.ark.interfaze.goods.request.GoodsSkuAddedRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,6 +31,9 @@ public class GoodsController {
 
     @Reference(group = "ark-credit-service")
     private GoodsSkuDubboService goodsSkuDubboService;
+
+    @Reference(group = "ark-credit-service")
+    private GoodsImageDubboService goodsImageDubboService;
 
     /**
      * 产品下创建SKU Form页面
@@ -81,4 +79,32 @@ public class GoodsController {
 
     }
 
+
+    /**
+     * 产品下创建SKU Form页面
+     */
+    @GetMapping("/editSku")
+    public String editSkuGet(Model model, Long id){
+
+        GoodsSku goodsSku = goodsSkuDubboService.get(id);
+        if(goodsSku==null){
+            throw new GmosException("商品信息不存在");
+        }
+
+        Product product = productDubboService.get(goodsSku.getProductId());
+
+        Map<SellAttribute, List<SellAttributeValue>> sellAttributeMap = new HashMap<>();
+        List<SellAttribute> sellAttributes = sellAttributeDubboService.findByCategoryId(product.getCategoryId());
+        for (SellAttribute sellAttribute : sellAttributes) {
+            List<SellAttributeValue> sellAttributeValues = sellAttributeValueDubboService.findByAttributeId(sellAttribute.getId());
+            sellAttributeMap.put(sellAttribute,sellAttributeValues);
+        }
+
+        List<GoodsImage> goodsImages = goodsImageDubboService.findBySkuId(id);
+        model.addAttribute("sellAttributeMap",sellAttributeMap);
+        model.addAttribute("goodsSku",goodsSku);
+        model.addAttribute("goodsImages",goodsImages);
+        return "goods/editSku";
+
+    }
 }

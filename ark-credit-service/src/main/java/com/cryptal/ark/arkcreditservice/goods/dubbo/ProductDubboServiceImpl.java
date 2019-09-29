@@ -10,6 +10,8 @@ import com.cryptal.ark.interfaze.goods.domain.Product;
 import com.cryptal.ark.interfaze.goods.dubbo.goods.ProductDubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Date;
+
 @Service(group="ark-credit-service")
 public class ProductDubboServiceImpl implements ProductDubboService {
 
@@ -32,8 +34,12 @@ public class ProductDubboServiceImpl implements ProductDubboService {
     }
 
     @Override
-    public void saveOrUpdate(Product goodsSku) {
-        productService.insert(ProductEntity.constructFrom(goodsSku));
+    public void saveOrUpdate(Product product) {
+        if(product.getId()==0){
+            product.setCreatedTime(new Date());
+        }
+        product.setModifyTime(new Date());
+        productService.insert(ProductEntity.constructFrom(product));
     }
 
     @Override

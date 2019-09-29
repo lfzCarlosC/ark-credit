@@ -6,6 +6,9 @@ import com.cryptal.ark.interfaze.goods.request.GoodsSkuAddedRequest;
 
 public interface GoodsSkuService extends GenericService<GoodsSkuEntity,Long> {
 
-    void createSku(GoodsSkuAddedRequest goodsSkuAddedRequest);
+    GoodsSkuEntity checkAndGet(Long id);
 
+    void enable(Long id);
+
+    void disable(Long id);
 }

@@ -10,6 +10,8 @@ import com.cryptal.ark.interfaze.goods.domain.GoodsImage;
 import com.cryptal.ark.interfaze.goods.dubbo.goods.GoodsImageDubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 @Service(group="ark-credit-service")
 public class GoodsImageDubboServiceImpl implements GoodsImageDubboService {
 
@@ -39,5 +41,10 @@ public class GoodsImageDubboServiceImpl implements GoodsImageDubboService {
     @Override
     public void delete(Long id) {
         goodsImageService.delete(id);
+    }
+
+    @Override
+    public List<GoodsImage> findBySkuId(Long skuId) {
+        return OpenConverterUtils.convertList(goodsImageService.findBySkuId(skuId));
     }
 }

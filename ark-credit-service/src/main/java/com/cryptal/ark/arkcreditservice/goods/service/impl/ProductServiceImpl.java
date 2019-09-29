@@ -12,10 +12,12 @@ import com.cryptal.ark.arkcreditservice.goods.entity.ProductEntity;
 import com.cryptal.ark.arkcreditservice.goods.service.ProductService;
 import com.cryptal.ark.arkcreditservice.member.event.MemberRankOrdered;
 import com.cryptal.ark.arkcreditservice.order.event.OrderCreated;
+import com.cryptal.ark.interfaze.goods.domain.GoodsSku;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -88,6 +90,19 @@ public class ProductServiceImpl extends GenericServiceImpl<ProductEntity,Long> i
         }
 
         return goodsSkuOptional.get();
+    }
+
+    @Override
+    public void delete(Long id) {
+        checkHasGoods(id);
+        super.delete(id);
+    }
+
+    private void checkHasGoods(Long id) {
+        List<GoodsSkuEntity> goodsSkuEntities = goodsSkuDao.findByProductId(id);
+        if(goodsSkuEntities.size()>0){
+            throw new CreditException("产品下有商品不能删除");
+        }
     }
 
     @Override

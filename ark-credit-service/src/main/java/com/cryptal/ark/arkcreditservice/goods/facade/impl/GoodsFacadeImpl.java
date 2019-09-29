@@ -4,6 +4,7 @@ import com.cryptal.ark.arkcreditservice.goods.entity.*;
 import com.cryptal.ark.arkcreditservice.goods.facade.GoodsFacade;
 import com.cryptal.ark.arkcreditservice.goods.service.*;
 import com.cryptal.ark.interfaze.goods.domain.GoodsImage;
+import com.cryptal.ark.interfaze.goods.domain.GoodsSellAttribute;
 import com.cryptal.ark.interfaze.goods.request.GoodsSkuAddedRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -39,6 +40,19 @@ public class GoodsFacadeImpl implements GoodsFacade {
         GoodsSkuEntity goodsSkuEntity = persistGoodsSku(request);
         persistImages(request, goodsSkuEntity);
         persistSellAttributes(request, goodsSkuEntity);
+    }
+
+    @Override
+    public void delete(Long id) {
+
+        List<GoodsImageEntity> goodsImageEntities = goodsImageService.findBySkuId(id);
+        goodsImageService.delete(goodsImageEntities);
+
+        List<GoodsSellAttributeEntity> goodsSellAttributes = goodsSellAttributeService.findBySku(id);
+        goodsSellAttributeService.delete(goodsSellAttributes);
+
+        goodsSkuService.delete(id);
+
     }
 
     private GoodsSkuEntity persistGoodsSku(GoodsSkuAddedRequest request) {

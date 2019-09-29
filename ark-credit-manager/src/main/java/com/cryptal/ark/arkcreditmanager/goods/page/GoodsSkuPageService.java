@@ -57,8 +57,6 @@ public class GoodsSkuPageService  extends PageService<GoodsSku,Long> {
                         new CreateOperation("createSku")
                 )
                 .withColumnAction(
-                        new NewPageOperation("主图设置","/admin/goods_image/page?skuId=#id#","主图设置","id"),
-                        new NewPageOperation("销售属性设置","/admin/goods_sell_attribute/page?skuId=#id#","销售属性设置","id"),
                         new EnableOperation("onSale"),
                         new EditOperation("editSku"),
                         new DeleteOperation()
@@ -88,5 +86,15 @@ public class GoodsSkuPageService  extends PageService<GoodsSku,Long> {
     @Override
     public void delete(GoodsSku goodsSku) {
         goodsSkuDubboService.delete(goodsSku.getId());
+    }
+
+    @Override
+    public void enable(String id) {
+        goodsSkuDubboService.enable(Long.parseLong(id));
+    }
+
+    @Override
+    public void disable(String id) {
+        goodsSkuDubboService.disable(Long.parseLong(id));
     }
 }

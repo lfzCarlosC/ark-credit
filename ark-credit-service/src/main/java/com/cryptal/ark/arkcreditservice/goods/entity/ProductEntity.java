@@ -38,8 +38,6 @@ public class ProductEntity implements OpenConvertible<Product> {
      */
     private Date modifyTime;
 
-
-
     public Long getId() {
         return id;
     }

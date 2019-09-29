@@ -4,6 +4,8 @@ import cn.com.gome.cloud.openplatform.common.PageObject;
 import cn.com.gome.cloud.openplatform.common.SearchFilter;
 import com.cryptal.ark.interfaze.goods.domain.GoodsImage;
 
+import java.util.List;
+
 public interface GoodsImageDubboService {
 
     PageObject<GoodsImage> paged(SearchFilter searchFilter);
@@ -16,4 +18,5 @@ public interface GoodsImageDubboService {
 
     void delete(Long id);
 
+    List<GoodsImage> findBySkuId(Long skuId);
 }

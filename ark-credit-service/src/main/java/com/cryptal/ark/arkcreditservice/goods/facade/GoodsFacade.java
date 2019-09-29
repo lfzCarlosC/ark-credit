@@ -8,4 +8,10 @@ public interface GoodsFacade {
      * @param goodsSkuAddedRequest
      */
     void addSku(GoodsSkuAddedRequest goodsSkuAddedRequest);
+
+    /**
+     * 删除 SKU
+     * @param id
+     */
+    void delete(Long id);
 }
