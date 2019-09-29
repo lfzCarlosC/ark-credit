@@ -9,4 +9,6 @@ public interface SellAttributeValueService extends GenericService<SellAttributeV
 
     List<SellAttributeValueEntity> findByAttributeId(Long attributeId);
 
+    SellAttributeValueEntity checkAndGet(Long valueId);
+
 }

@@ -19,7 +19,7 @@ public class FrontPageConfig {
     @Autowired
     private ApplicationContext applicationContext;
 
-    @Qualifier("commonFileUploadPlugin")
+    @Qualifier("aliYunUploadPlugin")
     @Autowired
     private FileUploadPlugin fileUploadPlugin; //GFS上传插件
 
@@ -28,8 +28,8 @@ public class FrontPageConfig {
 
         AdminItems adminItems = new AdminItemsBuilder()
                 .addRootItem("栏目管理","column",
-                        new LeafItem("栏目管理", "/admin/column/page"),
-                        new LeafItem("文章管理", "/admin/document/page")
+                        new LeafItem("栏目管理", "/admin/article_category/page"),
+                        new LeafItem("文章管理", "/admin/article/page")
                 )
                 .addRootItem("产品管理","goods",
                         new LeafItem("产品分类管理", "/admin/product_category/page"),

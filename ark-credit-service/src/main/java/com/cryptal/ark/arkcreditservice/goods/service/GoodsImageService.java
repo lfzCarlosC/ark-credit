@@ -9,4 +9,5 @@ public interface GoodsImageService extends GenericService<GoodsImageEntity,Long>
 
     List<GoodsImageEntity> findBySkuId(Long skuId);
 
+    void insertAll(List<GoodsImageEntity> goodsImageList);
 }

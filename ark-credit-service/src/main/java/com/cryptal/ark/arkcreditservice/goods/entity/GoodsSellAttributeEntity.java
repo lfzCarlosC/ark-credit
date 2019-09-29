@@ -1,12 +1,15 @@
 package com.cryptal.ark.arkcreditservice.goods.entity;
 
+import cn.com.gome.cloud.openplatform.open.OpenConvertible;
+import com.cryptal.ark.interfaze.goods.domain.GoodsSellAttribute;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class GoodsSellAttributeEntity {
+public class GoodsSellAttributeEntity implements OpenConvertible<GoodsSellAttribute> {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -48,5 +51,15 @@ public class GoodsSellAttributeEntity {
 
     public void setSellAttributeValueId(Long sellAttributeValueId) {
         this.sellAttributeValueId = sellAttributeValueId;
+    }
+
+    @Override
+    public GoodsSellAttribute converter() {
+        GoodsSellAttribute goodsSellAttribute = new GoodsSellAttribute();
+        goodsSellAttribute.setId(id);
+        goodsSellAttribute.setSkuId(skuId);
+        goodsSellAttribute.setSellAttributeId(sellAttributeId);
+        goodsSellAttribute.setSellAttributeValueId(sellAttributeValueId);
+        return goodsSellAttribute;
     }
 }

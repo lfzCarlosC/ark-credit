@@ -1,5 +1,7 @@
 package cn.com.gome.page.plugins.upload;
 
+import org.springframework.web.multipart.MultipartFile;
+
 /**
  * 文件上传插件接口
  */
@@ -7,9 +9,9 @@ public interface FileUploadPlugin {
 
     /**
      * 文件上传
-     * @param bytes
+     * @param multipartFile
      * @return
      */
-    String fileUpload(byte[] bytes);
+    String fileUpload(MultipartFile multipartFile);
 
 }

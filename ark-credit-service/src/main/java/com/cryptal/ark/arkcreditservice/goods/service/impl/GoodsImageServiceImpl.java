@@ -22,6 +22,11 @@ public class GoodsImageServiceImpl extends GenericServiceImpl<GoodsImageEntity,L
     }
 
     @Override
+    public void insertAll(List<GoodsImageEntity> goodsImageList) {
+        goodsImageDao.saveAll(goodsImageList);
+    }
+
+    @Override
     protected GenericDao<GoodsImageEntity, Long> getDao() {
         return goodsImageDao;
     }

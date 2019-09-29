@@ -12,4 +12,5 @@ public interface ProductService extends GenericService<ProductEntity,Long> {
      */
     void handleOrderCreated(OrderCreated event);
 
+    ProductEntity checkAndGet(Long productId);
 }

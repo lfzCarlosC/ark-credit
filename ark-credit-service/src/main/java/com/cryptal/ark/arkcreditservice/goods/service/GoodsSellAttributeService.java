@@ -1,19 +1,16 @@
 package com.cryptal.ark.arkcreditservice.goods.service;
 
+import cn.com.gome.cloud.openplatform.service.GenericService;
 import com.cryptal.ark.arkcreditservice.goods.entity.GoodsSellAttributeEntity;
 import com.cryptal.ark.arkcreditservice.goods.entity.SellAttributeValueEntity;
 
-public interface GoodsSellAttributeService {
+import java.util.List;
 
-    /**
-     *
-     * @param skuId             SKU
-     * @param sellAttributeId   销售属性ID
-     * @return
-     */
+public interface GoodsSellAttributeService extends GenericService<GoodsSellAttributeEntity,Long> {
+
     SellAttributeValueEntity findBySkuAndSellAttributeId(Long skuId, Long sellAttributeId);
 
-    void save(GoodsSellAttributeEntity goodsSellAttributeEntity1);
-
     GoodsSellAttributeEntity findBySkuIdAndSellAttributeId(Long skuId, long attributeId);
+
+    void saveAll(List<GoodsSellAttributeEntity> goodsSellAttributeEntities);
 }

@@ -13,6 +13,16 @@ public class GoodsSkuAddedRequest implements Serializable {
     private Long productId;
 
     /**
+     * 商品编码
+     */
+    private String goodsNo;
+
+    /**
+     * 条形码
+     */
+    private String barCode;
+
+    /**
      * 库存数
      */
     private Long stock;
@@ -25,12 +35,12 @@ public class GoodsSkuAddedRequest implements Serializable {
     /**
      * 主图信息
      */
-    private List<String> mainImagePaths;
+    private String[] imagePath;
 
     /**
-     * 销售属性
+     * 销售属性信息
      */
-    private Map<Long,Long> sellAttributeMap = new HashMap<>();
+    private Map<Long,Long> attributeValues = new HashMap<>();
 
     public Long getProductId() {
         return productId;
@@ -38,6 +48,22 @@ public class GoodsSkuAddedRequest implements Serializable {
 
     public void setProductId(Long productId) {
         this.productId = productId;
+    }
+
+    public String getGoodsNo() {
+        return goodsNo;
+    }
+
+    public void setGoodsNo(String goodsNo) {
+        this.goodsNo = goodsNo;
+    }
+
+    public String getBarCode() {
+        return barCode;
+    }
+
+    public void setBarCode(String barCode) {
+        this.barCode = barCode;
     }
 
     public Long getStock() {
@@ -56,15 +82,23 @@ public class GoodsSkuAddedRequest implements Serializable {
         this.price = price;
     }
 
-    public List<String> getMainImagePaths() {
-        return mainImagePaths;
+    public String[] getImagePath() {
+        return imagePath;
     }
 
-    public void setMainImagePaths(List<String> mainImagePaths) {
-        this.mainImagePaths = mainImagePaths;
+    public void setImagePath(String[] imagePath) {
+        this.imagePath = imagePath;
     }
 
-    public void addAttribute(Long attributeId, Long valueId) {
-        sellAttributeMap.put(attributeId,valueId);
+    public void addAttribute(Long attributeId, long attributeValueId) {
+        attributeValues.put(attributeId,attributeValueId);
+    }
+
+    public Map<Long, Long> getAttributeValues() {
+        return attributeValues;
+    }
+
+    public void setAttributeValues(Map<Long, Long> attributeValues) {
+        this.attributeValues = attributeValues;
     }
 }

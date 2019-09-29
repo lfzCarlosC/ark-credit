@@ -28,17 +28,17 @@ public class FileUploadController {
         FileUploadPlugin fileUploadPlugin = pageManager.getFileUploadPlugin();
 
         try{
-            return FormUploadFile.successFile(fileUploadPlugin.fileUpload(multipartFile.getBytes()));
+            return FormUploadFile.successFile(fileUploadPlugin.fileUpload(multipartFile));
         } catch (Exception ex) {
             return FormUploadFile.failFile(ex.getMessage());
         }
     }
 
     @PostMapping("/uploadImg")
-    public EditorUploadFile uploadImg(@RequestParam("filedata") MultipartFile filedata){
+    public EditorUploadFile uploadImg(@RequestParam("filedata") MultipartFile multipartFile){
         FileUploadPlugin fileUploadPlugin = pageManager.getFileUploadPlugin();
         try{
-            return EditorUploadFile.createSuccessResponse(fileUploadPlugin.fileUpload(filedata.getBytes()));
+            return EditorUploadFile.createSuccessResponse(fileUploadPlugin.fileUpload(multipartFile));
         } catch (Exception ex) {
             return EditorUploadFile.createFailResponse("错误: " + ex.getMessage());
         }

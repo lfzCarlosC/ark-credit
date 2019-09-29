@@ -54,6 +54,15 @@ public class ProductServiceImpl extends GenericServiceImpl<ProductEntity,Long> i
 
     }
 
+    @Override
+    public ProductEntity checkAndGet(Long productId) {
+        Optional<ProductEntity> productEntityOptional = productDao.findById(productId);
+        if(productEntityOptional.isPresent()){
+           return productEntityOptional.get();
+        }
+        throw new CreditException("产品ID不存在" + productId);
+    }
+
     /**
      * 校验商品是等级商品
      * @param productEntity

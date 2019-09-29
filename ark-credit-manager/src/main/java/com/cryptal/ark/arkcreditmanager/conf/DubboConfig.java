@@ -1,6 +1,8 @@
 package com.cryptal.ark.arkcreditmanager.conf;
 
 import com.alibaba.dubbo.config.ApplicationConfig;
+import com.alibaba.dubbo.config.ConsumerConfig;
+import com.alibaba.dubbo.config.ProviderConfig;
 import com.alibaba.dubbo.config.RegistryConfig;
 import com.alibaba.dubbo.config.spring.AnnotationBean;
 import org.springframework.context.annotation.Bean;
@@ -41,4 +43,17 @@ public class DubboConfig {
         return annotationBean;
     }
 
+    @Bean
+    public ProviderConfig providerConfig() {
+        ProviderConfig providerConfig = new ProviderConfig();
+        providerConfig.setTimeout(10000);
+        return providerConfig;
+    }
+
+    @Bean
+    public ConsumerConfig consumerConfig() {
+        ConsumerConfig consumerConfig = new ConsumerConfig();
+        consumerConfig.setTimeout(10000);
+        return consumerConfig;
+    }
 }
